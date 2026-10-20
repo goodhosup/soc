@@ -3,7 +3,7 @@
 !!! spec "규격 · 세대"
     공정 이름은 각 파운드리의 세대 이름이며 표준이 아닙니다 · 참고 로드맵: IEEE IRDS
     GAA 첫 양산: **삼성 SF3E(3GAE)**, 2022년 · 삼성 GAA를 쓴 첫 스마트폰·웨어러블용 칩: Exynos W1000(3nm, 2024), Exynos 2500(SF3, 2025)
-    **TSMC N2**: 2025년 하반기 양산 시작(발표 기준) · **삼성 SF2**: 2nm 스마트폰 SoC로 Exynos 2600 발표(2025년 말) · **Intel 18A**: RibbonFET + PowerVia, Panther Lake로 2025년 말~2026년 초 출시
+    **TSMC N2**: 2025년 4분기 양산 시작(발표 기준) · **삼성 SF2**: 첫 2nm 스마트폰 SoC로 Exynos 2600 발표(2025년 12월) · **Intel 18A**: RibbonFET + PowerVia, Panther Lake(Core Ultra 시리즈 3)로 2026년 1월(CES 2026) 출시
     후면 전력 공급: Intel 18A(PowerVia) → TSMC A16(Super Power Rail, 2026년 하반기 양산 계획) → 삼성 SF2Z(계획)
 
 !!! basic "한눈에 보기"
@@ -25,7 +25,7 @@
 | 3nm급 구조 | FinFET 유지 (N3 계열) | GAA 선도입 (SF3E, SF3) | 해당 없음 (Intel 3는 FinFET) |
 | 2nm급 첫 공정 | N2 → N2P | SF2 → SF2P 등 개량판 | 18A → 18A-P |
 | 후면 전력 | A16에서 도입 계획 | SF2Z에서 도입 계획 | 18A부터 PowerVia 적용 |
-| 스마트폰 SoC 고객 | 주요 플래그십 대부분이 N3 계열에서 이어 쓸 것으로 보도 | 자사 Exynos가 첫 고객 | 스마트폰 SoC는 공개된 고객 없음 (이 페이지 기준 시점) |
+| 스마트폰 SoC 고객 | 2026년 플래그십(Apple A20 Pro, Dimensity 9600 Pro 등)이 N2 계열로 전환 | 자사 Exynos가 첫 고객 | 스마트폰 SoC는 공개된 고객 없음 (이 페이지 기준 시점) |
 
 삼성은 GAA를 한 세대 먼저 도입해 경험을 쌓는 전략을, TSMC는 성숙한 FinFET(N3)으로 한 세대를 더 버티고 N2에서 GAA로 넘어가는 전략을 택했습니다. 초기 GAA 세대의 경쟁력은 구조의 이론적 이점보다 **수율과 설계 생태계(PDK, 표준 셀, IP)의 성숙도**가 더 크게 좌우했습니다.
 
@@ -33,10 +33,10 @@
 
 | 회사 | 상황 (이 페이지 기준 시점) |
 |---|---|
-| 삼성 | Exynos 2600을 SF2 기반 첫 2nm 스마트폰 SoC로 발표 |
-| Apple | 다음 세대 A 시리즈가 TSMC N2를 쓸 것이라는 보도가 이어짐 |
-| MediaTek | TSMC N2로 플래그십 SoC 테이프아웃을 발표, 제품은 후속 Dimensity에서 예상 |
-| Qualcomm | 2025년 플래그십(Snapdragon 8 Elite Gen 5)은 TSMC N3P, 2nm 채택 시점과 파운드리는 보도 단계 |
+| 삼성 | Exynos 2600을 SF2 기반 첫 2nm 스마트폰 SoC로 발표(2025년 12월) |
+| Apple | iPhone 18 Pro의 A20 Pro를 첫 2nm iPhone 칩으로 발표(2026년 9월), TSMC N2 계열로 보도 |
+| MediaTek | Dimensity 9600 Pro를 TSMC 2nm(N2P로 보도) 기반으로 발표(2026년 9월) |
+| Qualcomm | 2025년 플래그십(Snapdragon 8 Elite Gen 5)은 3nm, 2026년 Snapdragon 8 Elite Gen 6·Extreme Gen 6를 첫 2nm 칩으로 발표(2026년 9월, TSMC N2P로 보도) |
 
 > 각 칩셋의 실제 공정은 [칩셋 세대 인덱스](../reference/chipset-index.md)에 출처와 함께 모읍니다. 보도는 바뀔 수 있습니다.
 
@@ -87,7 +87,7 @@ High-NA EUV는 Intel이 14A 세대부터 적극적으로 도입하겠다고 밝�
 | 접근 | TSMC | 삼성 파운드리 | Intel Foundry |
 |---|---|---|---|
 | GAA 전환 전략 | 성숙한 FinFET 후 N2에서 전환 | 3nm부터 선도입 | 18A에서 GAA·후면 전력 동시 도입 |
-| 주요 2nm급 고객 | Apple·MediaTek·Qualcomm 등 다수 (보도 기준) | 자사 Exynos 중심, 외부 고객 확보 중 | 자사 PC 프로세서 중심 |
+| 주요 2nm급 고객 | Apple·MediaTek·Qualcomm 등 다수 (발표·보도 기준) | 자사 Exynos 중심, 외부 고객 확보 중 | 자사 PC 프로세서 중심 |
 | 후면 전력 | A16 (계획) | SF2Z (계획) | 18A |
 | High-NA EUV | 신중 (초기 세대 미적용 발표) | 도입 검토·장비 확보 보도 | 14A부터 도입 계획 |
 

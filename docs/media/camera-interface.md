@@ -1,7 +1,7 @@
 # 이미지 센서 인터페이스
 
 !!! spec "규격 · 세대"
-    MIPI **CSI-2**(Camera Serial Interface 2, 프로토콜 계층) + 물리 계층 MIPI **D-PHY**(v1.0 2009 → v2.x) 또는 **C-PHY**(v1.0 2014 → v2.x) · 장거리(차량)용 MIPI A-PHY · 센서 제어는 I2C 또는 I3C(CCI, Camera Control Interface)
+    MIPI **CSI-2**(Camera Serial Interface 2, 프로토콜 계층) + 물리 계층 MIPI **D-PHY**(v1.0 2009 → v2.x → v3.x, v3.0은 2021) 또는 **C-PHY**(v1.0 2014 → v2.x → v3.0, 2025) · 장거리(차량)용 MIPI A-PHY · 센서 제어는 I2C 또는 I3C(CCI, Camera Control Interface)
     스마트폰 적용: D-PHY 기반 CSI-2가 오랫동안 표준 → 고화소 센서와 함께 C-PHY 지원이 플래그십 SoC·센서에 확산. 한 SoC가 D-PHY·C-PHY를 모두 받는 겸용 PHY가 일반적
 
 !!! basic "한눈에 보기"
@@ -25,7 +25,7 @@
 | 대표 최대 링크 | 4레인 18 Gbps | 3 trio 약 41.1 Gbps |
 | 장단점 | 단순, 생태계 넓음 | 같은 핀 수로 더 높은 대역폭, 회로가 복잡 |
 
-D-PHY는 고속 전송(HS)과 저전력 제어(LP) 두 모드를 오가며, 프레임 사이 블랭킹 동안 저전력 상태로 들어가 전력을 아낍니다. 표의 최대 속도는 규격 버전 기준이며, 실제 제품의 지원 속도는 SoC와 센서마다 다릅니다. (수치는 `tools/soc_numbers.py`에서 계산)
+D-PHY는 고속 전송(HS)과 저전력 제어(LP) 두 모드를 오가며, 프레임 사이 블랭킹 동안 저전력 상태로 들어가 전력을 아낍니다. 표의 최대 속도는 스마트폰에서 널리 쓰인 v2.x 기준입니다. 이후 개정에서 D-PHY v3.0(2021)은 표준 채널 레인당 9 Gbps, C-PHY v2.1은 짧은 채널 trio당 8 Gsps(약 18.3 Gbps), C-PHY v3.0(2025)은 새 부호화로 짧은 채널 trio당 약 24.9 Gbps까지 올렸습니다. 실제 제품의 지원 속도는 SoC와 센서마다 다릅니다. (수치는 `tools/soc_numbers.py`에서 계산)
 
 ## CSI-2 패킷과 virtual channel { .l2 }
 

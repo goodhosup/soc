@@ -64,7 +64,7 @@ flowchart LR
 | 항목 | Snapdragon | Exynos · Tensor | Dimensity | Apple |
 |---|---|---|---|---|
 | PMIC 조달 | Qualcomm 자체 PMIC(PM 접두사 이름) 세트 | Samsung 자체 PMIC (S2MPS·S2MPG 계열 이름) | MediaTek 자체 PMIC (MT63xx 계열 이름) | 자체 설계 PMIC로 알려짐 |
-| SoC–PMIC 제어 | SPMI (업스트림 드라이버 공개) | 벤더 인터페이스 (공개 커널 소스) | 벤더 인터페이스·SPMI (공개 커널 소스) | 비공개 |
+| SoC–PMIC 제어 | SPMI (업스트림 드라이버 공개) | 벤더 인터페이스 (Tensor는 ACPM 펌웨어 경유, 공개 커널 소스) | 벤더 인터페이스·SPMI (공개 커널 소스) | 비공개 |
 | 충전 | Qualcomm 고속 충전 계열 + USB Power Delivery | USB Power Delivery 중심 | MediaTek 고속 충전 계열 + USB Power Delivery | USB Power Delivery |
 
 > 세대별 PMIC 조합은 기기마다 다르며, SoC 세대 정보는 [칩셋 세대 인덱스](../reference/chipset-index.md)에 모읍니다.

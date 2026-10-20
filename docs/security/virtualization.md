@@ -18,7 +18,7 @@
 | 하이퍼바이저 | 개발 주체 | 특징 |
 |---|---|---|
 | pKVM (protected KVM) | Google (Linux KVM 기반, 업스트림) | 호스트 Android 커널을 신뢰하지 않는 구조. EL2에 작은 코드만 두고 메모리 소유권을 추적 |
-| Gunyah | Qualcomm (오픈소스 공개) | Snapdragon의 EL2 하이퍼바이저. 이전 벤더 하이퍼바이저(QHEE)를 대체 |
+| Gunyah | Qualcomm (오픈소스 공개) | Snapdragon의 EL2 하이퍼바이저. 이전 세대의 비공개 벤더 하이퍼바이저(QHEE로 알려짐)를 대체한 것으로 알려짐 |
 | GenieZone | MediaTek | Dimensity의 하이퍼바이저 (공개 정보 제한) |
 | 벤더 커널 보호 하이퍼바이저 | Samsung 등 | 커널 코드·페이지 테이블 무결성 감시 (예: Samsung RKP) |
 

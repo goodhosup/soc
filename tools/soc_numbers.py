@@ -332,6 +332,8 @@ def checks():
         ("D-PHY 4레인 (Gbps)", dphy_gbps(4), 18, 0.05),
         ("C-PHY trio당 6 Gsps (Gbps)", cphy_gbps(1), 13.7, 0.05),
         ("C-PHY 3 trio (Gbps)", cphy_gbps(3), 41.1, 0.05),
+        ("C-PHY v2.1 짧은 채널 8 Gsps (Gbps)", cphy_gbps(1, 8.0), 18.3, 0.05),
+        ("D-PHY v3.0 레인 (Gbps)", 9.0, 9, 0.001),
         ("12MP 10bit raw 1장 (MB)", frame_mb(4000, 3000, 10), 15, 0.05),
         ("12MP 10bit raw 8장 (MB)", frame_mb(4000, 3000, 10, 8), 120, 0.5),
         ("4K60 10bit 4:2:0 원본 (Gbps)", pixel_rate_gbps(3840, 2160, 15, 60), 7.46, 0.005),

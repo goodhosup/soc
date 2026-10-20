@@ -1,7 +1,7 @@
 # 패키징
 
 !!! spec "규격 · 세대"
-    패키지 외형: JEDEC 패키지 외형 규격(JEP95 계열) · 다이 간 연결: **UCIe**(Universal Chiplet Interconnect Express, 1.0 2022 → 1.1 2023 → 2.0 2024), Open Compute BoW 등 · 회사별 기술: TSMC InFO·CoWoS·SoIC, 삼성 I-Cube·X-Cube·FOPLP, Intel EMIB·Foveros
+    패키지 외형: JEDEC 패키지 외형 규격(JEP95 계열) · 다이 간 연결: **UCIe**(Universal Chiplet Interconnect Express, 1.0 2022 → 1.1 2023 → 2.0 2024 → 3.0 2025), Open Compute BoW 등 · 회사별 기술: TSMC InFO·CoWoS·SoIC, 삼성 I-Cube·X-Cube·FOPLP, Intel EMIB·Foveros
     와이어 본딩 → **플립칩**(범프로 다이를 뒤집어 연결) → 팬아웃 웨이퍼 레벨 패키지 PoP(TSMC InFO-PoP, 2016년 Apple A10부터) → PC·서버의 칩렛과 2.5D·3D 적층 → 모바일 SoC로의 확대(논의·도입 초기)
 
 !!! basic "한눈에 보기"

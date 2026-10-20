@@ -1,7 +1,7 @@
 # 주요 GPU 계열
 
 !!! spec "규격 · 세대"
-    **Qualcomm Adreno**(2009년 AMD의 모바일 그래픽 사업 인수에서 출발) · **Arm Mali**(Utgard → Midgard → Bifrost → Valhall → 5세대 아키텍처, 상위 등급은 2022년부터 **Immortalis** 브랜드) · **Samsung Xclipse**(AMD RDNA 계열 기반, Exynos 2200·2022년부터) · **Apple GPU**(초기 iPhone은 PowerVR 라이선스, A11·2017년부터 자체 설계라고 발표) · **Imagination PowerVR**(TBDR의 원조 계열) · **Google Tensor**(G1–G4는 Arm Mali, G5는 Imagination PowerVR 채택으로 발표)
+    **Qualcomm Adreno**(2009년 AMD의 모바일 그래픽 사업 인수에서 출발) · **Arm Mali**(Utgard → Midgard → Bifrost → Valhall → 5세대 아키텍처, 상위 등급은 2022년부터 **Immortalis** 브랜드, 2025년 **Mali G1** 계열부터 Ultra·Premium·Pro 등급의 Mali 이름으로 통합) · **Samsung Xclipse**(AMD RDNA 계열 기반, Exynos 2200·2022년부터) · **Apple GPU**(초기 iPhone은 PowerVR 라이선스, A11·2017년부터 자체 설계라고 발표) · **Imagination PowerVR**(TBDR의 원조 계열) · **Google Tensor**(G1–G4는 Arm Mali, G5는 Imagination PowerVR 채택으로 발표)
     모바일 하드웨어 레이 트레이싱 첫 적용: Exynos 2200(2022년 초) → Immortalis-G715 탑재 Dimensity·Adreno 740 탑재 Snapdragon 8 Gen 2(2022년 말) → Apple A17 Pro(2023)
 
 !!! basic "한눈에 보기"
@@ -27,11 +27,11 @@
 
 | 계열 | 아키텍처 단위의 변화 |
 |---|---|
-| Arm Mali | **Utgard**(꼭짓점·픽셀 셰이더가 분리된 초기 구조) → **Midgard**(통합 셰이더, SIMD 벡터 방식) → **Bifrost**(스칼라 기반 쿼드 실행으로 전환) → **Valhall**(더 넓은 워프, 실행 엔진 재설계) → **5세대 아키텍처**(지연 꼭짓점 셰이딩). 2025년에는 이름 체계를 바꾼 Mali G1 계열을 발표했습니다(이 페이지 기준 시점) |
+| Arm Mali | **Utgard**(꼭짓점·픽셀 셰이더가 분리된 초기 구조) → **Midgard**(통합 셰이더, SIMD 벡터 방식) → **Bifrost**(스칼라 기반 쿼드 실행으로 전환) → **Valhall**(더 넓은 워프, 실행 엔진 재설계) → **5세대 아키텍처**(지연 꼭짓점 셰이딩). 2025년에는 Immortalis 이름을 접고 Ultra·Premium·Pro 등급으로 나눈 Mali G1 계열(Mali G1-Ultra 등)을 발표했습니다 |
 | Qualcomm Adreno | 숫자 세대(2xx → 3xx → … → 7xx)마다 셰이더 구조와 렌더링 기능을 키웠고, Snapdragon 8 Elite 세대의 Adreno(8xx)에서 GPU를 여러 슬라이스로 나누는 구조로 재편했다고 발표했습니다 |
-| Samsung Xclipse | RDNA 2 기반(Exynos 2200)에서 시작해 이후 세대에서 더 새로운 RDNA 계열로 갱신했습니다. 향후 자체 GPU 개발 여부는 보도 수준입니다 |
-| Apple GPU | 자체 설계 전환 후 매년 개선, A17 Pro·M3 세대(2023)에서 하드웨어 레이 트레이싱·메시 셰이딩과 함께 칩 안 메모리를 동적으로 나눠 쓰는 Dynamic Caching을 소개했습니다. 2025년 세대에서는 GPU 코어 안에 행렬 연산 가속기(Neural Accelerator)를 넣었다고 발표했습니다 |
-| PowerVR | SGX → Rogue → Furian → A·B·C·D 시리즈(알파벳 세대 이름)로 이어졌고, 최근 세대에서 레이 트레이싱과 연산 기능을 강화했습니다 |
+| Samsung Xclipse | RDNA 2 기반(Exynos 2200)에서 시작해 Exynos 2400·2500에서 RDNA 3 계열로 갱신했고, Exynos 2600의 Xclipse 960은 새 아키텍처라고만 발표했습니다(RDNA 4 계열이라는 보도가 있음). 향후 자체 GPU 개발 여부는 보도 수준입니다 |
+| Apple GPU | 자체 설계 전환 후 매년 개선, A17 Pro·M3 세대(2023)에서 하드웨어 레이 트레이싱·메시 셰이딩과 함께 칩 안 메모리를 동적으로 나눠 쓰는 Dynamic Caching을 소개했습니다. 2025년 세대(A19·M5)에서는 GPU 코어마다 행렬 연산 가속기(Neural Accelerator)를 넣었다고 발표했습니다 |
+| PowerVR | SGX → Rogue → Furian → A·B·C·D·E 시리즈(알파벳 세대 이름, E 시리즈는 2025년 발표)로 이어졌고, 최근 세대에서 레이 트레이싱과 연산 기능을 강화했습니다 |
 
 ## 설계 철학의 차이 { .l2 }
 

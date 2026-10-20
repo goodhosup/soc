@@ -45,9 +45,9 @@ RISC-V가 응용 프로세서 시장에서 오래 겪은 문제는 "어떤 확�
 
 | 영역 | 상황 |
 |---|---|
-| Android | Google이 RISC-V를 Android 지원 아키텍처로 추가하는 작업을 진행, 2024년 공용 커널(GKI) 빌드에서 일시 제외되는 등 진행 속도가 바뀌어 옴. 정식 지원 수준은 AOSP 공지로 확인 필요 |
+| Android | Google이 RISC-V를 Android 지원 아키텍처로 추가하는 작업을 진행, 2024년 Android 공용 커널(ACK)에서 riscv64 지원이 제거되어 GKI 빌드에서 빠짐(Google은 RISC-V 지원을 계속한다고 밝힘). 이 페이지 기준 시점에도 GKI 기반 RISC-V 상용 Android 기기는 없음. 정식 지원 수준은 AOSP 공지로 확인 필요 |
 | 업계 협력 | RISE 프로젝트(2023, Linux Foundation Europe) — 여러 칩·소프트웨어 회사가 RISC-V용 툴체인·런타임을 함께 준비 |
-| Qualcomm | Google과 RISC-V 기반 Wear OS 플랫폼 협력 발표(2023), 차량용 RISC-V 합작사 Quintauris 참여, 서버급 RISC-V 설계사 Ventana 인수 발표(보도 기준) |
+| Qualcomm | Google과 RISC-V 기반 Wear OS 플랫폼 협력 발표(2023), 차량용 RISC-V 합작사 Quintauris 참여, 서버급 RISC-V CPU 설계사 Ventana Micro Systems 인수 발표(2025년 12월) |
 | SiFive | RISC-V 코어 IP 회사. 고성능 P 계열, 벡터·AI용 X·Intelligence 계열 |
 | T-Head (Alibaba) | XuanTie C9xx 계열 고성능 코어, 중국 내 RISC-V 생태계의 주요 축 |
 | 기타 | Andes(코어 IP), Tenstorrent(고성능 코어 IP) 등 |

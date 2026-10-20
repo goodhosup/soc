@@ -2,8 +2,8 @@
 
 !!! spec "규격 · 세대"
     ISA: Armv8-A(AArch64) → Armv9-A · 펌웨어·OS 요구: Arm SystemReady, Windows on Arm, macOS(Apple Silicon)
-    Windows on Arm 첫 상용 노트북: Snapdragon 835 탑재 기기(2017년 무렵) → Snapdragon 8cx(2018) → **Snapdragon X Elite/Plus**(2024, Copilot+ PC) → **Snapdragon X2 Elite**(2025년 발표, 2026년 기기 출시)
-    Apple: **M1**(2020, Rosetta 2와 함께 Mac 전환 시작) → M2 → M3 → M4 → M5(2025년 발표)
+    Windows on Arm 첫 상용 노트북: Snapdragon 835 탑재 기기(2017년 무렵) → Snapdragon 8cx(2018) → **Snapdragon X Elite/Plus**(2024, Copilot+ PC) → **Snapdragon X2 Elite**(2025년 9월 발표, 2026년 상반기 기기 출시)
+    Apple: **M1**(2020, Rosetta 2와 함께 Mac 전환 시작) → M2 → M3 → M4 → M5(2025년) → M6(2026년 8월 발표, Apple의 첫 2nm 칩)
     x86 에뮬레이션: macOS **Rosetta 2**(2020), Windows 11 **Prism**(24H2, 2024)
 
 !!! basic "한눈에 보기"

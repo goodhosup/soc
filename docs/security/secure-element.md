@@ -2,7 +2,7 @@
 
 !!! spec "규격 · 세대"
     Android **StrongBox KeyMint**(StrongBox는 Android 9에서 도입) · GlobalPlatform Secure Element 규격 · Common Criteria(보안 칩은 흔히 높은 공격 저항 등급 AVA_VAN.5 목표) · FIPS 140 계열 · GSMA eSIM(eUICC·iUICC)
-    Apple Secure Enclave(A7, 2013) → Google Titan M(Pixel 3, 2018) → Titan M2(Pixel 6, 2021) · Samsung Knox Vault(Galaxy S21, 2021) · Qualcomm SPU(Snapdragon 845 무렵, 발표 기준)
+    Apple Secure Enclave(A7, 2013) → Google Titan M(Pixel 3, 2018) → Titan M2(Pixel 6, 2021) · Samsung Knox Vault(Galaxy S21, 2021) · Qualcomm SPU(Snapdragon 845, 2017년 12월 발표)
 
 !!! basic "한눈에 보기"
     TrustZone의 보안 세계는 일반 세계와 **같은 CPU를 시간을 나눠** 씁니다. 하드웨어 보안 모듈은 한 걸음 더 나아가, **아예 다른 프로세서와 메모리**를 둡니다.

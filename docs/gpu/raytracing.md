@@ -1,7 +1,7 @@
 # 레이 트레이싱과 업스케일링
 
 !!! spec "규격 · 세대"
-    API: Vulkan 레이 트레이싱 확장(`VK_KHR_acceleration_structure`·`VK_KHR_ray_query`·`VK_KHR_ray_tracing_pipeline`, 2020년 최종) · Metal 레이 트레이싱 API · 업스케일링: Qualcomm **Snapdragon GSR**(1세대 공간, 2세대 시간 방식) · **Arm ASR**(Accuracy Super Resolution, 2024, AMD FSR 2 기반) · Apple **MetalFX**(2022, 공간·시간 업스케일링, 이후 프레임 보간 추가 발표)
+    API: Vulkan 레이 트레이싱 확장(`VK_KHR_acceleration_structure`·`VK_KHR_ray_query`·`VK_KHR_ray_tracing_pipeline`, 2020년 최종) · Metal 레이 트레이싱 API · 업스케일링: Qualcomm **Snapdragon GSR**(1세대 공간, 2세대 시간 방식) · **Arm ASR**(Accuracy Super Resolution, 2024, AMD FSR 2 기반) · Apple **MetalFX**(2022, 공간·시간 업스케일링, Metal 4(2025)에서 프레임 보간·디노이저 추가)
     모바일 하드웨어 레이 트레이싱: Exynos 2200(2022) → Immortalis-G715·Adreno 740 세대(2022년 말) → Apple A17 Pro(2023) → 이후 플래그십 GPU 대부분이 지원(이 페이지 기준 시점)
 
 !!! basic "한눈에 보기"
@@ -42,8 +42,8 @@ flowchart LR
 |---|---|---|---|
 | 공간 업스케일링 | 현재 프레임 하나 | 가볍고 통합이 쉬움, 세부 복원에 한계 | Snapdragon GSR 1세대, MetalFX 공간 |
 | 시간 업스케일링 | 현재 프레임 + 모션 벡터 + 깊이 + 이전 결과 | 세부 복원이 좋음, 엔진 통합 필요, 고스팅 관리 | Snapdragon GSR 2세대, Arm ASR, MetalFX 시간 |
-| 신경망 업스케일링 | 시간 방식 입력 + 학습된 모델 | 품질 향상 기대, 행렬 연산 성능 필요 | Arm이 신경망 기반 방식을 발표(이 페이지 기준 시점) |
-| 프레임 생성(보간) | 연속한 두 프레임 + 모션 정보 | 렌더링하지 않은 중간 프레임을 만들어 화면 갱신 빈도를 높임, 입력 지연은 줄지 않음 | Qualcomm Adreno Frame Motion Engine, MetalFX 프레임 보간(발표 기준) |
+| 신경망 업스케일링 | 시간 방식 입력 + 학습된 모델 | 품질 향상 기대, 행렬 연산 성능 필요 | Arm Neural Super Sampling(2025 발표, 2026년 이후 GPU 대상), Samsung ENSS(Exynos 2600) |
+| 프레임 생성(보간) | 연속한 두 프레임 + 모션 정보 | 렌더링하지 않은 중간 프레임을 만들어 화면 갱신 빈도를 높임, 입력 지연은 줄지 않음 | Qualcomm Adreno Frame Motion Engine, MetalFX 프레임 보간(Metal 4) |
 
 업스케일링의 이득은 픽셀 수에서 옵니다. 가로·세로를 각각 2/3로 렌더링하면 픽셀 수는 약 **44%**, 각각 1/2이면 **25%**가 됩니다. 셰이딩 비용이 픽셀 수에 비례한다고 가정하면 그만큼 GPU 일이 줄고, 남은 시간을 업스케일러 실행과 발열 여유에 씁니다. (수치는 `tools/soc_numbers.py`에서 계산)
 
@@ -61,8 +61,8 @@ flowchart LR
 | 항목 | Snapdragon | Exynos | Dimensity | Apple |
 |---|---|---|---|---|
 | 하드웨어 레이 트레이싱 | 지원 (Adreno 740 세대부터) | 지원 (Xclipse, RDNA 계열 방식) | 지원 (Immortalis 계열부터) | 지원 (A17 Pro부터) |
-| 업스케일링 | Snapdragon GSR | 엔진·타사 업스케일러 활용 | Arm ASR 등 | MetalFX |
-| 프레임 생성 | Adreno Frame Motion Engine | 공개 정보 적음 | 벤더 기술 발표 | MetalFX 프레임 보간 (발표 기준) |
+| 업스케일링 | Snapdragon GSR | 엔진·타사 업스케일러, Exynos 2600부터 ENSS | Arm ASR 등 | MetalFX |
+| 프레임 생성 | Adreno Frame Motion Engine | Exynos 2600의 신경망 프레임 생성 발표 | 벤더 기술 발표 | MetalFX 프레임 보간 (Metal 4) |
 | API 경로 | Vulkan 확장 | Vulkan 확장 | Vulkan 확장 | Metal |
 
 > 세대별 레이 트레이싱 지원 여부는 [칩셋 세대 인덱스](../reference/chipset-index.md)에 모읍니다.

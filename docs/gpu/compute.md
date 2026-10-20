@@ -35,7 +35,7 @@
 | 화면과의 경합 | 게임·UI 렌더링과 같은 자원을 나눔 | 그래픽과 독립 |
 | 잘 맞는 일 | 전처리·후처리, 연산자 다양성이 큰 모델, 그래픽과 묶인 효과 | 상시 동작 AI, 큰 모델의 주 연산 |
 
-최근에는 경계가 흐려지고 있습니다. GPU 코어 안에 행렬 연산 유닛을 넣거나(예: 2025년 Apple GPU의 Neural Accelerator 발표, Arm의 GPU용 신경망 가속 발표), Vulkan 확장으로 GPU의 행렬 연산을 직접 쓰게 하는 흐름이 있어, 그래픽 안의 AI(업스케일링 등)는 GPU에서 처리하는 경우가 늘고 있습니다(이 페이지 기준 시점).
+최근에는 경계가 흐려지고 있습니다. GPU 코어 안에 행렬 연산 유닛을 넣거나(예: 2025년 Apple A19·M5 GPU의 Neural Accelerator, 2025년 Arm이 발표한 2026년 이후 GPU용 신경망 가속기), Vulkan 확장으로 GPU의 행렬 연산을 직접 쓰게 하는 흐름이 있어, 그래픽 안의 AI(업스케일링 등)는 GPU에서 처리하는 경우가 늘고 있습니다(이 페이지 기준 시점).
 
 ```mermaid
 flowchart LR
@@ -65,7 +65,7 @@ flowchart LR
 |---|---|---|---|---|
 | GPU 연산 API | Vulkan, OpenCL (Adreno 드라이버 제공) | Vulkan, OpenCL (기기별 차이) | Vulkan, OpenCL (기기별 차이) | Metal, MPS |
 | AI 경로 | 벤더 SDK·런타임이 NPU·GPU·CPU 분배 | 벤더 SDK·런타임 | 벤더 SDK·런타임 | Core ML이 Neural Engine·GPU·CPU 분배 |
-| 그래픽 안 AI | 업스케일링·프레임 생성 등 | 엔진 기반 | Arm 신경망 그래픽 기술 발표 | MetalFX, GPU 행렬 가속 (발표 기준) |
+| 그래픽 안 AI | 업스케일링·프레임 생성 등 | Exynos 2600의 신경망 업스케일링·프레임 생성(ENSS) 발표 | Arm 신경망 그래픽 기술 발표 | MetalFX, GPU 행렬 가속 (A19·M5) |
 
 > 세대별 GPU 연산 성능 공개 값은 [칩셋 세대 인덱스](../reference/chipset-index.md)에 모읍니다.
 

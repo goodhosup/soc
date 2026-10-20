@@ -1,8 +1,8 @@
 # AI 소프트웨어 스택
 
 !!! spec "규격 · 세대"
-    Android **NNAPI**(Android 8.1, 2017 도입 → Android 15에서 지원 중단(deprecated) 발표) · **TensorFlow Lite → LiteRT**(2024년 명칭 변경, GPU·NPU 가속 경로 제공) · **Core ML**(iOS 11, 2017) · **ONNX Runtime**(실행 공급자 구조) · **ExecuTorch**(PyTorch의 온디바이스 런타임, 2024년 베타 이후 정식화)
-    회사별 SDK: Qualcomm **AI Engine Direct(QNN)**(이전 SNPE의 후속) · MediaTek **NeuroPilot** · Samsung의 Exynos용 SDK(Neural SDK 계열, 명칭과 공개 범위는 시점에 따라 바뀌어 옴) · Google **AICore**(시스템 모델 서비스)
+    Android **NNAPI**(Android 8.1, 2017 도입 → Android 15에서 지원 중단(deprecated) 발표) · **TensorFlow Lite → LiteRT**(2024년 9월 명칭 변경, GPU·NPU 가속 경로 제공) · **Core ML**(iOS 11, 2017) · **ONNX Runtime**(실행 공급자 구조) · **ExecuTorch**(PyTorch의 온디바이스 런타임, 2024년 베타 → 2025년 10월 1.0 정식 출시)
+    회사별 SDK: Qualcomm **AI Engine Direct(QNN)**(이전 SNPE의 후속) · MediaTek **NeuroPilot** · Samsung **Exynos AI Studio**(모델 변환·최적화 툴체인)와 Exynos AI LiteCore(런타임, 이전 명칭과 공개 범위는 시점에 따라 바뀌어 옴) · Google **AICore**(시스템 모델 서비스)
 
 !!! basic "한눈에 보기"
     NPU는 일반 프로그램처럼 코드를 바로 실행하지 못합니다. 모델을 NPU가 알아듣는 형태로 바꾸고, NPU가 못 하는 부분은 다른 프로세서에 맡기는 **소프트웨어 층**이 필요합니다.
@@ -67,8 +67,8 @@ NNAPI의 교훈은 "공통 API만으로는 최신 연산과 성능을 따라가�
 
 | 항목 | Snapdragon | Exynos | Dimensity | Apple | Tensor |
 |---|---|---|---|---|---|
-| 회사 SDK | AI Engine Direct (QNN), Qualcomm AI Hub | Exynos용 SDK (Neural SDK 계열) | NeuroPilot | 없음 (Core ML이 유일한 공개 경로) | 별도 공개 SDK보다 Android 표준 경로 중심 |
-| 표준 런타임 백엔드 | LiteRT, ONNX Runtime, ExecuTorch 백엔드 제공 | LiteRT 등 (지원 범위는 시점별 확인) | LiteRT, ExecuTorch 백엔드 제공 | Core ML (ONNX Runtime·ExecuTorch의 Core ML 백엔드 경유 가능) | LiteRT |
+| 회사 SDK | AI Engine Direct (QNN), Qualcomm AI Hub | Exynos AI Studio·LiteCore | NeuroPilot | 없음 (Core ML이 유일한 공개 경로) | 별도 공개 SDK보다 Android 표준 경로 중심 |
+| 표준 런타임 백엔드 | LiteRT, ONNX Runtime, ExecuTorch 백엔드 제공 | LiteRT, ExecuTorch 백엔드 (지원 SoC는 시점별 확인) | LiteRT, ExecuTorch 백엔드 제공 | Core ML (ONNX Runtime·ExecuTorch의 Core ML 백엔드 경유 가능) | LiteRT |
 | OS 모델 서비스 | 기기 제조사·AICore | 기기 제조사(Galaxy AI)·AICore | 기기 제조사·AICore | Foundation Models | AICore (Gemini Nano) |
 
 > 세대별 SDK 버전과 지원 연산 변화는 [칩셋 세대 인덱스](../reference/chipset-index.md)에 모읍니다.

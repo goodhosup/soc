@@ -1,7 +1,7 @@
 # Arm 코어 계보
 
 !!! spec "규격 · 세대"
-    Arm 코어 기술 참조 설명서(Technical Reference Manual), Arm 발표 자료 · 아키텍처: Armv8-A(Cortex-A53·A57부터) → v8.2(A75·A55, DynamIQ) → **Armv9.0**(X2·A710·A510, 2021) → v9.2(X4·A720·A520, 2023) → **C1 계열**(2025, Armv9.3)
+    Arm 코어 기술 참조 설명서(Technical Reference Manual), Arm 발표 자료 · 아키텍처: Armv8-A(Cortex-A53·A57부터) → v8.2(A75·A55, DynamIQ) → **Armv9.0**(X2·A710·A510, 2021) → v9.2(X4·A720·A520, 2023) → **C1 계열**(2025, Armv9.3) → C2 계열(2026, Armv9.3 기반)
     연도는 Arm이 코어를 **발표한 해** 기준이며, 탑재 스마트폰은 보통 그다음 해에 나옵니다.
 
 !!! basic "한눈에 보기"
@@ -27,6 +27,7 @@
 | 2023 | X4 | A720 | A520 | Armv9.2 | |
 | 2024 | X925 | A725 | A520 (개선판) | Armv9.2 | 이름 체계 변경(X925) |
 | 2025 | **C1-Ultra** | **C1-Premium · C1-Pro** | **C1-Nano** | Armv9.3 | 브랜드 개편, SME2 지원, **Lumex** 플랫폼 |
+| 2026 | C2-Ultra | C2-Pro | — | Armv9.3 (일부 v9.4 기능, 발표 기준) | CSS for Mobile 2로 발표, Lumex 이름은 쓰지 않음, 고효율 등급 코어 없이 발표 |
 
 함께 쓰는 클러스터 부품인 **DSU**(DynamIQ Shared Unit)도 세대를 거듭하며 코어 수·L3 용량·전력 관리 기능을 늘려 왔습니다([캐시와 일관성](cache-coherence.md)).
 

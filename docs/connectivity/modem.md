@@ -22,7 +22,7 @@
 | 보드 면적·비용 | 부품 수 감소 | 칩·전원·메모리 부품 추가 |
 | 다이 면적 | SoC 다이가 커짐, 공정을 AP와 같이 써야 함 | 모뎀에 맞는 공정을 따로 고를 수 있음 |
 | 개발 일정 | 모뎀과 AP를 같은 일정에 맞춰야 함 | 모뎀만 따로 바꾸거나 여러 AP에 재사용 가능 |
-| 대표 사례 | Snapdragon 8 계열, Dimensity 플래그십, Exynos 플래그십 | Apple iPhone(Qualcomm 모뎀 또는 Apple C1), Google Tensor(Exynos Modem) |
+| 대표 사례 | Snapdragon 8 계열, Dimensity 플래그십, Exynos 2100–2500 | Apple iPhone(Qualcomm 모뎀 또는 Apple C1·C2), Google Tensor, Exynos 2600(외장 Exynos Modem 5410) |
 
 통합 여부와 관계없이 **RF 트랜시버와 프런트엔드는 거의 항상 별도 칩**입니다. 아날로그·고주파 회로는 디지털 미세 공정의 이득을 덜 받고, 안테나 근처에 놓여야 하기 때문입니다. 그래서 "통합 모뎀"은 보통 **모뎀 베이스밴드(디지털 부분)가 SoC 안에 있다**는 뜻입니다.
 
@@ -70,7 +70,7 @@ flowchart LR
 
 | 항목 | Qualcomm Snapdragon | Samsung Exynos | MediaTek Dimensity | Apple | Google Tensor |
 |---|---|---|---|---|---|
-| 플래그십 모뎀 배치 | 통합 (Snapdragon X 시리즈 IP) | 통합 (Exynos Modem IP) | 통합 | 외장 (Qualcomm 또는 자체 C1 계열) | 외장 (Samsung Exynos Modem) |
+| 플래그십 모뎀 배치 | 통합 (Snapdragon X 시리즈 IP) | 2100–2500은 통합, Exynos 2600은 외장(Exynos Modem 5410) | 통합 | 외장 (Qualcomm 또는 자체 C1·C2) | 외장 (G5까지 Samsung Exynos Modem, G6는 MediaTek 모뎀으로 보도) |
 | 외장 모뎀 제품 | Snapdragon X 시리즈 (노트북·차량·모듈용 포함) | Exynos Modem 단품 (Tensor 등에 공급) | 외장 모뎀 제품 보유 (M 시리즈) | 자사 기기 전용 | — |
 | RF 트랜시버·프런트엔드 | 트랜시버와 프런트엔드 대부분을 자체 공급 가능 | 트랜시버 자체, 프런트엔드는 외부 부품 혼용 | 트랜시버 자체, 프런트엔드는 외부 부품 혼용 | 트랜시버도 자체 설계로 알려짐(C1), 프런트엔드는 외부 부품 | Samsung 모뎀 플랫폼 기반 |
 | 모뎀–AP 연결 | 온칩 공유 메모리 | 온칩 공유 메모리 | 온칩 공유 메모리 | 칩 사이 링크 | 칩 사이 링크 |

@@ -61,7 +61,7 @@
 |---|---|---|---|---|---|
 | 블록 이름 | Hexagon NPU | NPU (+ DSP) | APU / NPU | Neural Engine | TPU |
 | 출발점 | DSP 확장 | 전용 설계 | 전용 설계 | 전용 설계 | 데이터센터·Edge TPU 연구 |
-| 대표 개발 경로 | QNN, LiteRT·ONNX Runtime 백엔드 | Samsung의 Exynos용 SDK, LiteRT | NeuroPilot, LiteRT | Core ML | LiteRT, AICore |
+| 대표 개발 경로 | QNN, LiteRT·ONNX Runtime 백엔드 | Exynos AI Studio, LiteRT | NeuroPilot, LiteRT | Core ML | LiteRT, AICore |
 | 공개 정보 수준 | SDK 문서 상세, 내부 구조 일부 공개 | 제한적 | SDK 문서 중심 | 매우 제한적 | 제한적 |
 
 > 세대별 NPU 명칭·버전과 발표 TOPS는 [칩셋 세대 인덱스](../reference/chipset-index.md)에 모읍니다.
