@@ -220,6 +220,49 @@ def energy_per_frame_mj(watts: float, fps: float) -> float:
     return watts / fps * 1000
 
 
+# ---------------------------------------------------------------- 보안
+def brute_force_hours(space: float, ms_per_try: float) -> float:
+    """시도 제한 없이 전체 경우의 수를 시도하는 시간 (시간)."""
+    return space * ms_per_try / 1000 / 3600
+
+
+# ---------------------------------------------------------------- 제조 원가
+def cost_per_good_die(wafer_cost: float, area_mm2: float, d0_per_cm2: float) -> float:
+    """양품 다이 1개당 웨이퍼 원가 = 웨이퍼 가격 / (웨이퍼당 다이 수 × 수율)."""
+    return wafer_cost / (dies_per_wafer(area_mm2) * poisson_yield(area_mm2, d0_per_cm2))
+
+
+# ---------------------------------------------------------------- 벤치마크
+def stability_pct(min_score: float, max_score: float) -> float:
+    """지속 성능 안정성 = 최저 루프 ÷ 최고 루프 (%)."""
+    return min_score / max_score * 100
+
+
+def perf_per_watt(score: float, watts: float) -> float:
+    return score / watts
+
+
+def geomean(*xs: float) -> float:
+    return math.prod(xs) ** (1 / len(xs))
+
+
+def ipc(instructions: float, cycles: float) -> float:
+    return instructions / cycles
+
+
+# ---------------------------------------------------------------- 최신 동향
+def die_cost_ratio(a0: float, d0_0: float, a1: float, d0_1: float, wafer_cost_ratio: float) -> float:
+    """새 공정 다이(=같은 트랜지스터 수) 비용 / 이전 공정 다이 비용."""
+    g0 = dies_per_wafer(a0) * poisson_yield(a0, d0_0)
+    g1 = dies_per_wafer(a1) * poisson_yield(a1, d0_1)
+    return wafer_cost_ratio * g0 / g1
+
+
+def fit_failures(fit: float, hours: float, units: float) -> float:
+    """FIT(10^9 시간당 고장 수) × 운행 시간 × 대수 → 기대 고장 수."""
+    return fit * 1e-9 * hours * units
+
+
 # ---------------------------------------------------------------- 출력·검산
 def show() -> None:
     print("LPDDR 피크 대역폭 (64비트 버스, GB/s)")
@@ -326,6 +369,44 @@ def checks():
         ("대기 40 mW (일)", runtime_h(battery_wh(5000), 0.040) / 24, 20.2, 0.05),
         ("60 fps·3.0 W (mJ/frame)", energy_per_frame_mj(3.0, 60), 50, 0.05),
         ("120 fps·4.8 W (mJ/frame)", energy_per_frame_mj(4.8, 120), 40, 0.05),
+        ("6자리 PIN 전수 시도, 80 ms/회 (시간)", brute_force_hours(10**6, 80), 22.2, 0.05),
+        ("UFS 4.x HS-G5 2레인 (GB/s)", ufs_raw_gbps("HS-G5") / 8, 5.8, 0.05),
+        ("110 mm² 웨이퍼당 다이 수", dies_per_wafer(110), 579, 1),
+        ("110 mm² 수율 (D0 0.1)", poisson_yield(110, 0.1) * 100, 89.6, 0.05),
+        ("110 mm² 수율 (D0 0.2)", poisson_yield(110, 0.2) * 100, 80.3, 0.05),
+        ("110 mm² 수율 (D0 0.5)", poisson_yield(110, 0.5) * 100, 57.7, 0.05),
+        ("110 mm² 양품 (D0 0.1)", dies_per_wafer(110) * poisson_yield(110, 0.1), 519, 1),
+        ("110 mm² 양품 (D0 0.2)", dies_per_wafer(110) * poisson_yield(110, 0.2), 465, 1),
+        ("110 mm² 양품 (D0 0.5)", dies_per_wafer(110) * poisson_yield(110, 0.5), 334, 1),
+        ("양품당 원가 $20k·D0 0.1 ($)", cost_per_good_die(20000, 110, 0.1), 38.6, 0.05),
+        ("양품당 원가 $20k·D0 0.2 ($)", cost_per_good_die(20000, 110, 0.2), 43.0, 0.05),
+        ("양품당 원가 $20k·D0 0.5 ($)", cost_per_good_die(20000, 110, 0.5), 59.9, 0.05),
+        ("200 mm² 웨이퍼당 다이 수", dies_per_wafer(200), 306, 1),
+        ("200 mm² 수율 (D0 0.2)", poisson_yield(200, 0.2) * 100, 67.0, 0.05),
+        ("200 mm² 양품 (D0 0.2)", dies_per_wafer(200) * poisson_yield(200, 0.2), 205, 1),
+        ("100 mm² 수율 (D0 0.2)", poisson_yield(100, 0.2) * 100, 81.9, 0.05),
+        ("100 mm² 양품 (D0 0.2)", dies_per_wafer(100) * poisson_yield(100, 0.2), 524, 1),
+        ("100 mm² 2개 세트 (D0 0.2)", dies_per_wafer(100) * poisson_yield(100, 0.2) / 2, 262, 1),
+        ("스트레스 안정성 3200/5000 (%)", stability_pct(3200, 5000), 64, 0.05),
+        ("칩 A 와트당 점수 5000/8 W", perf_per_watt(5000, 8), 625, 0.5),
+        ("칩 B 와트당 점수 4500/6 W", perf_per_watt(4500, 6), 750, 0.5),
+        ("B/A 효율 비", perf_per_watt(4500, 6) / perf_per_watt(5000, 8), 1.2, 0.005),
+        ("기하 평균 (2, 8)", geomean(2, 8), 4, 0.005),
+        ("IPC 3e9/2e9", ipc(3e9, 2e9), 1.5, 0.005),
+        ("87 mm² 웨이퍼당 다이 수", dies_per_wafer(87), 741, 1),
+        ("87 mm² 수율 (D0 0.1)", poisson_yield(87, 0.1) * 100, 91.7, 0.05),
+        ("87 mm² 수율 (D0 0.2)", poisson_yield(87, 0.2) * 100, 84.0, 0.05),
+        ("87 mm² 양품 다이 (D0 0.1)", dies_per_wafer(87) * poisson_yield(87, 0.1), 679, 1),
+        ("87 mm² 양품 다이 (D0 0.2)", dies_per_wafer(87) * poisson_yield(87, 0.2), 623, 1),
+        ("2nm 트랜지스터당 비용 비 (성숙 수율)", die_cost_ratio(100, 0.1, 87, 0.1, 1.3), 1.11, 0.005),
+        ("2nm 트랜지스터당 비용 비 (초기 수율)", die_cost_ratio(100, 0.1, 87, 0.2, 1.3), 1.21, 0.005),
+        ("128비트 LPDDR5X-8533 (GB/s)", dram_bw_gbs(8533, 128), 136.5, 0.05),
+        ("256비트 LPDDR5X-8533 (GB/s)", dram_bw_gbs(8533, 256), 273.1, 0.05),
+        ("512비트 LPDDR5X-8533 (GB/s)", dram_bw_gbs(8533, 512), 546.1, 0.05),
+        ("10 FIT·1만 시간·100만 대 고장", fit_failures(10, 1e4, 1e6), 100, 0.5),
+        ("100 FIT·1만 시간·100만 대 고장", fit_failures(100, 1e4, 1e6), 1000, 0.5),
+        ("7B INT4 가중치 크기 (GB)", 7 * 4 / 8, 3.5, 0.005),
+        ("12MP 10bit 30fps 바이트 환산 (GB/s)", pixel_rate_gbps(4000, 3000, 10, 30) / 8, 0.45, 0.005),
     ]
 
 
