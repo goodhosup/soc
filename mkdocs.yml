@@ -1,0 +1,215 @@
+site_name: SoC Handbook — Snapdragon · Exynos · Dimensity · Apple Silicon
+site_description: CPU·GPU·NPU·ISP부터 메모리·전력·보안·공정까지 — 초급부터 전문가까지 단계적으로 읽는 모바일 칩셋 핸드북
+site_author: SoC Handbook
+site_url: https://goodhosup.github.io/soc/
+repo_url: https://github.com/goodhosup/soc
+repo_name: soc
+edit_uri: edit/main/docs/
+copyright: 본문과 그림은 직접 작성했습니다. 표준 문서와 제조사 발표는 문서·발표 이름만 출처로 인용합니다.
+
+theme:
+  name: material
+  language: ko
+  font:
+    text: Noto Sans KR
+    code: JetBrains Mono
+  icon:
+    logo: material/chip
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로 전환
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로 전환
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - navigation.path
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - content.action.edit
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - path: javascripts/diagrams.mjs
+    type: module
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.mark
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        # Material 기본 Mermaid 통합 대신 javascripts/diagrams.mjs가 렌더링 (큰 시퀀스 다이어그램 가독성)
+        - name: mermaid
+          class: diagram-src
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search:
+      lang:
+        - en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+
+validation:
+  anchors: warn
+
+watch:
+  - includes
+
+nav:
+  - 홈: index.md
+  - 시작하기:
+      - getting-started/index.md
+      - SoC란 무엇인가: getting-started/what-is-soc.md
+      - 모바일 SoC의 역사: getting-started/history.md
+      - 주요 제조사와 생태계: getting-started/ecosystem.md
+      - 칩셋 이름 읽는 법: getting-started/naming.md
+      - 학습 로드맵: getting-started/roadmap.md
+  - 공통 기초:
+      - basics/index.md
+      - 트랜지스터와 CMOS: basics/transistor.md
+      - 공정 노드와 미세화: basics/process-node.md
+      - 컴퓨터 구조 기초: basics/computer-architecture.md
+      - 메모리 계층: basics/memory-hierarchy.md
+      - 클럭과 전압: basics/clock-voltage.md
+      - 버스와 인터커넥트: basics/interconnect.md
+      - 성능·전력·면적 (PPA): basics/ppa.md
+  - CPU:
+      - cpu/index.md
+      - Arm 아키텍처: cpu/arm-architecture.md
+      - Arm 코어 계보: cpu/arm-cores.md
+      - 자체 설계 코어: cpu/custom-cores.md
+      - 이기종 클러스터: cpu/clusters.md
+      - 캐시와 일관성: cpu/cache-coherence.md
+      - 스케줄링과 EAS: cpu/scheduling.md
+      - 코어 마이크로아키텍처: cpu/microarchitecture.md
+  - GPU:
+      - gpu/index.md
+      - 모바일 GPU 구조: gpu/architecture.md
+      - 주요 GPU 계열: gpu/families.md
+      - 그래픽 API와 드라이버: gpu/apis.md
+      - 레이 트레이싱과 업스케일링: gpu/raytracing.md
+      - GPU 연산: gpu/compute.md
+  - NPU와 AI:
+      - npu/index.md
+      - NPU란 무엇인가: npu/what-is-npu.md
+      - 주요 NPU 계열: npu/families.md
+      - TOPS와 정밀도: npu/tops.md
+      - 온디바이스 LLM: npu/llm.md
+      - AI 소프트웨어 스택: npu/software.md
+  - 멀티미디어:
+      - media/index.md
+      - ISP와 카메라 파이프라인: media/isp.md
+      - 이미지 센서 인터페이스: media/camera-interface.md
+      - 비디오 코덱: media/video-codec.md
+      - 디스플레이 파이프라인: media/display.md
+      - 오디오와 DSP: media/audio-dsp.md
+      - 센서 허브: media/sensor-hub.md
+  - 메모리와 저장장치:
+      - memory/index.md
+      - LPDDR: memory/lpddr.md
+      - 메모리 컨트롤러와 SLC: memory/controller-slc.md
+      - 패키지와 PoP: memory/packaging.md
+      - UFS 저장장치: memory/ufs.md
+      - 메모리 보호와 IOMMU: memory/iommu.md
+  - 연결:
+      - connectivity/index.md
+      - 모뎀의 통합: connectivity/modem.md
+      - Wi-Fi·Bluetooth 콤보: connectivity/wifi-bt.md
+      - GNSS·UWB·위성: connectivity/gnss-uwb.md
+      - PCIe·USB: connectivity/pcie-usb.md
+      - 저속 주변장치 (I2C·I3C·SPI·UART): connectivity/low-speed.md
+  - 전력과 열:
+      - power/index.md
+      - DVFS와 전력 관리: power/dvfs.md
+      - 파워 도메인과 게이팅: power/power-domains.md
+      - PMIC와 전원 공급: power/pmic.md
+      - 열 관리와 스로틀링: power/thermal.md
+      - 대기 전력과 저전력 상태: power/idle.md
+      - 전력 측정과 분석: power/measurement.md
+  - 보안과 부팅:
+      - security/index.md
+      - 부팅 과정: security/boot.md
+      - TrustZone과 TEE: security/trustzone.md
+      - 하드웨어 보안 모듈: security/secure-element.md
+      - 암호 가속과 키 관리: security/crypto.md
+      - 하드웨어 공격과 대응: security/attacks.md
+      - 가상화: security/virtualization.md
+  - 설계와 제조:
+      - design/index.md
+      - SoC 설계 흐름: design/flow.md
+      - IP와 통합: design/ip-integration.md
+      - 검증과 에뮬레이션: design/verification.md
+      - 파운드리와 공정: design/foundry.md
+      - 패키징: design/packaging.md
+      - 시험과 양산: design/test.md
+  - 소프트웨어와 실무:
+      - software/index.md
+      - Android BSP 구조: software/android-bsp.md
+      - Linux 커널과 SoC 지원: software/linux-kernel.md
+      - 성능 분석 도구: software/profiling.md
+      - 벤치마크 읽는 법: software/benchmarks.md
+      - 개발 보드로 실습: software/dev-boards.md
+  - 최신 동향:
+      - next/index.md
+      - 2nm 세대와 GAA 경쟁: next/2nm.md
+      - Arm PC와 노트북 SoC: next/arm-pc.md
+      - 차량용 SoC: next/automotive.md
+      - RISC-V의 부상: next/riscv.md
+  - 레퍼런스:
+      - reference/index.md
+      - 칩셋 세대 인덱스: reference/chipset-index.md
+      - 제조사별 비교: reference/vendor-compare.md
+      - 표준 인덱스: reference/standards.md
+      - 약어 사전: reference/glossary.md
+      - 계산기: reference/calculators.md
+      - 참고 자료: reference/resources.md
