@@ -3,10 +3,14 @@
 1. soc_blocks        : 스마트폰 SoC의 일반적인 블록 구성과 인터커넥트, 외부 메모리
 2. memory_hierarchy  : 메모리 계층별 용량과 접근 지연 (로그 축, 대표 범위)
 3. dvfs_curve        : 동작점(OPP)별 주파수–전압과 상대 동적 전력 (개념도)
+4. transistor_3d     : 평면 · FinFET · GAA 나노시트 · CFET 입체 개념도
+5. transistor_xsec   : 채널 단면에서 본 게이트 감싸기 (1면 · 3면 · 4면 · 적층)
 """
 from __future__ import annotations
 
+import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
 from matplotlib.patches import FancyBboxPatch, Rectangle
 
 import style as s
@@ -131,8 +135,147 @@ def dvfs_curve():
     s.save(fig, "basics_dvfs_curve")
 
 
+# ---------------------------------------------------------------- 4–5. 트랜지스터 구조
+def _shade(c, f):
+    r, g, b = mcolors.to_rgb(c)
+    if f >= 1:
+        return (r + (1 - r) * (f - 1), g + (1 - g) * (f - 1), b + (1 - b) * (f - 1))
+    return (r * f, g * f, b * f)
+
+
+def _cuboid(ax, x0, y0, z0, dx, dy, dz, c, kx=0.55, ky=0.42):
+    """사투영(oblique) 직육면체: 앞면·윗면·오른쪽 면만 그린다. 그리는 순서는 호출하는 쪽이 정한다."""
+    def P(x, y, z):
+        return (x + kx * y, z + ky * y)
+    x1, y1, z1 = x0 + dx, y0 + dy, z0 + dz
+    front = [P(x0, y0, z0), P(x1, y0, z0), P(x1, y0, z1), P(x0, y0, z1)]
+    top = [P(x0, y0, z1), P(x1, y0, z1), P(x1, y1, z1), P(x0, y1, z1)]
+    side = [P(x1, y0, z0), P(x1, y1, z0), P(x1, y1, z1), P(x1, y0, z1)]
+    for pts, f in ((front, 1.0), (top, 1.35), (side, 0.78)):
+        ax.add_patch(Polygon(pts, closed=True, facecolor=_shade(c, f), edgecolor="#ffffff", lw=0.8))
+
+
+def transistor_3d():
+    sub, ch, gate, pch = "#c9c7c1", s.DL, s.UL, s.ALT
+    fig, axes = plt.subplots(1, 4, figsize=(14, 3.9))
+    titles = ["Planar MOSFET\n(gate on 1 side)", "FinFET\n(gate on 3 sides)",
+              "GAA nanosheet\n(gate on all 4 sides)", "CFET (research)\n(nFET + pFET stacked)"]
+    L, W = 6.0, 3.0           # 채널 방향(x) 길이, 폭 방향(y) 깊이
+    gx0, gx1 = 2.3, 3.7       # 게이트 위치(x)
+    for ax, t in zip(axes, titles):
+        s.bare(ax)
+        ax.set_xlim(-0.3, 8.2)
+        ax.set_ylim(-0.6, 5.6)
+        ax.set_aspect("equal")
+        ax.set_title(t, fontsize=10, color=s.INK, pad=4)
+
+    # (a) 평면: 기판 위 얕은 채널, 그 위에 게이트
+    ax = axes[0]
+    _cuboid(ax, 0, 0, 0, L, W, 1.4, sub)
+    _cuboid(ax, 0, 0.6, 1.4, gx0, 1.8, 0.15, ch)
+    _cuboid(ax, gx0, 0.6, 1.4, gx1 - gx0, 1.8, 0.15, ch)
+    _cuboid(ax, gx1, 0.6, 1.4, L - gx1, 1.8, 0.15, ch)
+    _cuboid(ax, gx0, 0.3, 1.55, gx1 - gx0, 2.4, 0.9, gate)
+
+    # (b) FinFET: 세운 핀을 게이트가 위·양옆에서 감쌈
+    ax = axes[1]
+    fy0, fw, fh = 1.25, 0.5, 2.0
+    _cuboid(ax, 0, 0, 0, L, W, 1.0, sub)
+    _cuboid(ax, 0, fy0, 1.0, gx0, fw, fh, ch)
+    _cuboid(ax, gx0, 0.3, 1.0, gx1 - gx0, 2.4, fh + 0.6, gate)
+    _cuboid(ax, gx1, fy0, 1.0, L - gx1, fw, fh, ch)
+
+    # (c) GAA: 가로로 누운 얇은 판 3장을 게이트가 완전히 감쌈
+    ax = axes[2]
+    _cuboid(ax, 0, 0, 0, L, W, 1.0, sub)
+    sheets = [1.5, 2.25, 3.0]
+    for z in sheets:
+        _cuboid(ax, 0, 0.75, z, gx0, 1.5, 0.3, ch)
+    _cuboid(ax, gx0, 0.3, 1.0, gx1 - gx0, 2.4, 3.0, gate)
+    for z in sheets:
+        _cuboid(ax, gx1, 0.75, z, L - gx1, 1.5, 0.3, ch)
+
+    # (d) CFET: 아래 nFET 판, 위 pFET 판을 한 게이트가 감쌈
+    ax = axes[3]
+    _cuboid(ax, 0, 0, 0, L, W, 1.0, sub)
+    stack = [(1.4, ch), (2.0, ch), (3.0, pch), (3.6, pch)]
+    for z, c in stack:
+        _cuboid(ax, 0, 0.75, z, gx0, 1.5, 0.3, c)
+    _cuboid(ax, gx0, 0.3, 1.0, gx1 - gx0, 2.4, 3.6, gate)
+    for z, c in stack:
+        _cuboid(ax, gx1, 0.75, z, L - gx1, 1.5, 0.3, c)
+    ax.text(7.6, 2.6, "nFET", fontsize=8.5, color=ch, va="center", fontweight="bold")
+    ax.text(7.6, 4.2, "pFET", fontsize=8.5, color=pch, va="center", fontweight="bold")
+
+    for ax in axes:
+        ax.text(0.0, -0.25, "source", fontsize=8, color=s.INK2, va="top")
+        ax.text(5.2, -0.25, "drain", fontsize=8, color=s.INK2, va="top")
+    # 범례
+    for i, (lab, c) in enumerate((("gate", gate), ("channel (n)", ch), ("channel (p, CFET)", pch), ("substrate / isolation", sub))):
+        fig.patches.append(Rectangle((0.30 + i * 0.12, 0.06), 0.012, 0.03, transform=fig.transFigure,
+                                     facecolor=c, edgecolor="none"))
+        fig.text(0.315 + i * 0.12, 0.075, lab, fontsize=8.5, color=s.INK2, va="center")
+    fig.text(0.5, 0.0, "conceptual 3D sketches, not to scale; spacers, contacts and source/drain epitaxy omitted",
+             ha="center", fontsize=8.8, color=s.MUTED)
+    s.save(fig, "basics_transistor_3d")
+
+
+def transistor_xsec():
+    """전류가 흐르는 방향으로 본 단면: 게이트(주황)가 채널(파랑)을 몇 면에서 누르는지."""
+    sub, ch, gate, pch, ox = "#c9c7c1", s.DL, s.UL, s.ALT, s.SPECIAL
+    fig, axes = plt.subplots(1, 4, figsize=(13, 3.9))
+    specs = [("Planar", "1 side"), ("FinFET", "3 sides"), ("GAA nanosheet", "4 sides, per sheet"),
+             ("CFET", "4 sides, n and p stacked")]
+    for ax, (t, sub_t) in zip(axes, specs):
+        s.bare(ax)
+        ax.set_xlim(0, 5)
+        ax.set_ylim(-0.2, 5.2)
+        ax.set_aspect("equal")
+        ax.set_title(f"{t}\ngate control: {sub_t}", fontsize=10, color=s.INK, pad=4)
+        ax.add_patch(Rectangle((0.3, 0), 4.4, 1.0, facecolor=sub, edgecolor="none"))
+
+    def R(ax, x, y, w, h, c):
+        ax.add_patch(Rectangle((x, y), w, h, facecolor=c, edgecolor="#ffffff", lw=0.8))
+
+    # 평면
+    ax = axes[0]
+    R(ax, 0.3, 0.75, 4.4, 0.25, ch)
+    R(ax, 0.8, 1.0, 3.4, 0.12, ox)
+    R(ax, 0.8, 1.12, 3.4, 1.1, gate)
+    # FinFET
+    ax = axes[1]
+    R(ax, 0.9, 1.0, 3.2, 3.0, gate)
+    R(ax, 2.05, 1.0, 0.9, 2.5, ox)
+    R(ax, 2.17, 1.0, 0.66, 2.38, ch)
+    # GAA
+    ax = axes[2]
+    R(ax, 0.6, 1.0, 3.8, 3.4, gate)
+    for y in (1.4, 2.4, 3.4):
+        R(ax, 0.98, y - 0.12, 3.04, 0.64, ox)
+        R(ax, 1.1, y, 2.8, 0.4, ch)
+    # CFET
+    ax = axes[3]
+    R(ax, 0.6, 1.0, 3.8, 4.0, gate)
+    for y, c in ((1.3, ch), (2.1, ch), (3.3, pch), (4.1, pch)):
+        R(ax, 0.98, y - 0.12, 3.04, 0.6, ox)
+        R(ax, 1.1, y, 2.8, 0.36, c)
+    ax.text(4.5, 1.9, "n", fontsize=10, color=ch, va="center", fontweight="bold")
+    ax.text(4.5, 3.9, "p", fontsize=10, color=pch, va="center", fontweight="bold")
+
+    for i, (lab, c) in enumerate((("gate metal", gate), ("gate dielectric", ox), ("channel (n)", ch),
+                                  ("channel (p)", pch), ("substrate", sub))):
+        fig.patches.append(Rectangle((0.22 + i * 0.12, 0.07), 0.012, 0.03, transform=fig.transFigure,
+                                     facecolor=c, edgecolor="none"))
+        fig.text(0.235 + i * 0.12, 0.085, lab, fontsize=8.5, color=s.INK2, va="center")
+    fig.text(0.5, 0.01, "cross-section across the channel (current flows into the page); conceptual, not to scale",
+             ha="center", fontsize=8.8, color=s.MUTED)
+    s.save(fig, "basics_transistor_xsec")
+
+
 if __name__ == "__main__":
     s.setup()
     soc_blocks()
     memory_hierarchy()
     dvfs_curve()
+    transistor_3d()
+    transistor_xsec()
