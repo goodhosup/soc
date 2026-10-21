@@ -23,6 +23,8 @@
 | Apple | A 시리즈 (2023년 A17 Pro부터 Pro 아이폰용은 이름 뒤에 Pro), Mac·iPad는 M 시리즈 | 별도 중급 브랜드 없음. 기본 iPhone·SE·16e도 A 시리즈를 쓰되 이전 세대 칩이나 GPU 코어를 줄인 판을 씀 | A: Fusion(A10) → Bionic(A11–A16) → Pro(A17 Pro부터), iPad용 X·Z(A12X·A12Z 등), M: Pro·Max·Ultra | 공개 이름 위주. 내부 식별자는 `T8xxx` 형식 (예: A19와 A19 Pro는 모두 T8150이고 리비전으로 구분) |
 | Google | Tensor G1–G5… | — | — | 공개 이름 위주 |
 
+![Snapdragon 8 Elite Gen 5, Exynos 2600, Dimensity 9500, A19 Pro 이름에서 등급·세대·변형을 읽는 법](../assets/figures/naming_anatomy.svg)
+
 !!! tip "부품 번호가 더 정확할 때"
     마케팅 이름은 바뀌어도 부품 번호는 회사 내부 규칙을 오래 유지합니다. 커널 소스, 디바이스 트리, 벤치마크 결과에는 마케팅 이름 대신 `sm8750`, `s5e9945` 같은 부품 번호나 코드 이름이 나오는 경우가 많으므로, 둘의 대응표를 만들어 두면 자료를 찾기 쉽습니다. 대응표는 [칩셋 세대 인덱스](../reference/chipset-index.md)에 모읍니다.
 

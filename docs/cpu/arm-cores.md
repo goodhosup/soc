@@ -29,6 +29,8 @@
 | 2025 | **C1-Ultra** | **C1-Premium · C1-Pro** | **C1-Nano** | Armv9.3 | 브랜드 개편, SME2 지원, **Lumex** 플랫폼 |
 | 2026 | C2-Ultra | C2-Pro | — | Armv9.3 (일부 v9.4 기능, 발표 기준) | CSS for Mobile 2로 발표, Lumex 이름은 쓰지 않음, 고효율 등급 코어 없이 발표 |
 
+![2012년부터 2026년까지 발표된 Arm 모바일 코어를 최고 성능·균형·고효율 등급과 아키텍처 버전별로 정리한 세대표](../assets/figures/cpu_arm_core_timeline.svg)
+
 함께 쓰는 클러스터 부품인 **DSU**(DynamIQ Shared Unit)도 세대를 거듭하며 코어 수·L3 용량·전력 관리 기능을 늘려 왔습니다([캐시와 일관성](cache-coherence.md)).
 
 ## 등급별 설계 성격 { .l2 }

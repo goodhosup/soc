@@ -33,6 +33,8 @@
 | Apple GPU | 자체 설계 전환 후 매년 개선, A17 Pro·M3 세대(2023)에서 하드웨어 레이 트레이싱·메시 셰이딩과 함께 칩 안 메모리를 동적으로 나눠 쓰는 Dynamic Caching을 소개했습니다. 2025년 세대(A19·M5)에서는 GPU 코어마다 행렬 연산 가속기(Neural Accelerator)를 넣었다고 발표했습니다 |
 | PowerVR | SGX → Rogue → Furian → A·B·C·D·E 시리즈(알파벳 세대 이름, E 시리즈는 2025년 발표)로 이어졌고, 최근 세대에서 레이 트레이싱과 연산 기능을 강화했습니다 |
 
+![Mali, Adreno, Xclipse, Apple GPU, PowerVR의 아키텍처 계보](../assets/figures/gpu_family_lineage.svg)
+
 ## 설계 철학의 차이 { .l2 }
 
 | 관점 | 자체 설계 (Adreno, Apple) | IP 라이선스 (Mali, PowerVR) | 협력 설계 (Xclipse) |

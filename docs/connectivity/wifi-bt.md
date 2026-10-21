@@ -33,6 +33,8 @@
 | GPIO | 전원 켜기, 호스트 깨우기(host wake), 리셋 | — |
 | 공존 링크 (UART 형태) | 셀룰러 모뎀과 송수신 일정 정보 교환 | 저속 |
 
+![Wi-Fi·Bluetooth 콤보 칩과 SoC(PCIe·UART·오디오·GPIO), 셀룰러 모뎀(공존 링크) 사이의 연결](../assets/figures/conn_wifi_bt_links.svg)
+
 (수치는 `tools/soc_numbers.py`에서 계산) Wi-Fi 7의 최대 PHY 속도는 수 Gbps에 이르므로, SDIO는 고성능 Wi-Fi에 부족하고 PCIe가 사실상 필수입니다. 반대로 Bluetooth는 수 Mbps 수준이어서 UART로 충분합니다.
 
 ## 공존 (Coexistence) { .l2 }
