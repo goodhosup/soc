@@ -38,6 +38,8 @@
 | EL2 | 하이퍼바이저 | Android pKVM, 벤더 하이퍼바이저 |
 | EL3 | 보안 모니터 (보안 세계 전환) | Trusted Firmware-A 같은 펌웨어 |
 
+![Arm 예외 수준 EL0–EL3과 일반 세계·보안 세계의 구성](../assets/figures/cpu_exception_levels.svg)
+
 여기에 **보안 세계(Secure)**와 **일반 세계(Non-secure)**라는 축이 겹쳐, 보안 세계의 EL1에서 TEE 운영체제가, EL0에서 신뢰 앱(TA)이 돕니다([TrustZone과 TEE](../security/trustzone.md)).
 
 ## 주요 확장이 하는 일 { .l2 }

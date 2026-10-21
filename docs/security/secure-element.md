@@ -21,6 +21,8 @@
 | eSE (embedded SE) | SoC 밖 별도 보안 칩 | Titan M2, 기기 제조사 탑재 eSE | 물리적으로 분리, 높은 인증 등급 | 느린 버스(SPI 등), 부품·면적 추가 |
 | iSE (integrated SE) | SoC 다이 안 별도 보안 서브시스템 | Qualcomm SPU, Apple Secure Enclave | 칩 하나로 해결, 빠른 내부 연결 | SoC 공정·전원과 일부 공유, 인증 난도 |
 
+![TEE, iSE, eSE의 위치와 격리 수준 비교](../assets/figures/sec_hw_security_placement.svg)
+
 Android에서는 이런 칩을 **StrongBox**로 노출합니다. 앱이 키를 만들 때 `setIsStrongBoxBacked(true)`를 지정하면 키가 TEE가 아니라 보안 칩 안에서 생성·사용됩니다. StrongBox는 TEE보다 느리고 지원 알고리즘이 적은 대신(예: RSA-2048, ECDSA P-256, AES, HMAC 중심), 키가 더 강하게 격리됩니다.
 
 ## 주요 구현 { .l2 }

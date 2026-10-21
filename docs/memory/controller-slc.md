@@ -35,6 +35,8 @@
 | 모뎀·DSP | 저전력 상시 작업이 DRAM을 깨우지 않도록 |
 | 블록 간 데이터 전달 | ISP가 쓴 데이터를 GPU·NPU가 SLC에서 바로 읽음 |
 
+![CPU·GPU·NPU·ISP·디스플레이 요청이 인터커넥트와 SLC를 거쳐 메모리 컨트롤러, PHY, LPDDR 채널로 가는 경로](../assets/figures/memory_controller_slc.svg)
+
 SLC는 모든 블록이 공유하므로, 한 블록이 독차지하면 다른 블록이 손해를 봅니다. 그래서 SLC를 **블록별 영역(slice, partition)으로 나누고**, 소프트웨어가 사용 상황(예: 카메라 촬영 중, 게임 중)에 따라 영역 크기와 우선순위를 바꾸는 구조가 쓰입니다.
 
 ??? expert "전문가 노트 — SLC는 성능보다 전력, QoS의 실제, 대역폭 투표"

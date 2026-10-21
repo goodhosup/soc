@@ -32,6 +32,8 @@
 | 링크 계층 | MIPI UniPro | 신뢰성 있는 전송, 흐름 제어 |
 | 물리 계층 | MIPI M-PHY | 고속 직렬 차동 신호, 기어·레인 |
 
+![UFS 계층 구조와 세대별 M-PHY 레인당 속도 (HS-G3 약 5.8, HS-G4 약 11.7, HS-G5 약 23.3 Gbps)](../assets/figures/memory_ufs_stack.svg)
+
 SoC 쪽에는 **UFS 호스트 컨트롤러**(UFSHCI 표준 레지스터 인터페이스)와 M-PHY가 있고, 저장장치 쪽에는 컨트롤러와 낸드 플래시가 한 패키지에 들어 있습니다. 저장 데이터 암호화는 보통 SoC의 **인라인 암호 엔진**이 UFS 경로 위에서 처리합니다([암호 가속과 키 관리](../security/crypto.md)).
 
 ??? expert "전문가 노트 — 순차 속도의 함정, WriteBooster, 장기 성능 저하"

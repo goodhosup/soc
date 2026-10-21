@@ -42,6 +42,8 @@
 | SoC와의 연결 | 주로 SPI, 깨우기·인터럽트용 GPIO |
 | 보안 | 802.15.4z의 STS(Scrambled Timestamp Sequence)로 거리 위조 방지, 키는 보안 요소에서 관리 |
 
+![GNSS L5(1176.45 MHz)·L1(1575.42 MHz)과 UWB 채널 5(약 6.5 GHz)·9(약 8 GHz)의 주파수 위치와 대역폭](../assets/figures/conn_gnss_uwb_bands.svg)
+
 0.60 m는 빛의 속도 ÷ 499.2 MHz로 계산한 값입니다. (수치는 `tools/soc_numbers.py`에서 계산) 스마트폰 UWB는 대부분 **별도 칩**이며, Apple은 자체 설계 칩(U1, 이후 2세대 UWB 칩), Android 기기는 NXP·Qorvo 같은 전문 업체 칩을 써 왔습니다. 최근에는 UWB를 Wi-Fi·Bluetooth 콤보 칩에 합치는 제품도 발표되었습니다(예: Qualcomm FastConnect 7900, 2024년 발표).
 
 ## 위성 통신의 세 가지 방식 { .l2 }
