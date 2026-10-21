@@ -170,7 +170,7 @@ def npu_design_styles():
 # ---------------------------------------------------------------- 5. Wi-Fi·BT 연결
 def wifi_bt_links():
     fig, ax = canvas(12, 5.0, (0, 12.4), (-0.3, 6.4))
-    ax.add_patch(FancyBboxPatch((0.2, 0.4), 4.6, 5.6, boxstyle="round,pad=0,rounding_size=0.15",
+    ax.add_patch(FancyBboxPatch((0.2, 0.4), 3.7, 5.6, boxstyle="round,pad=0,rounding_size=0.15",
                                 facecolor=s.EMPTY, edgecolor=s.INK2, lw=1.6))
     ax.text(0.45, 5.7, "SoC", fontsize=10, fontweight="bold", color=s.INK2)
     box(ax, 0.6, 4.2, 3.0, 0.9, s.DL, "PCIe root port", fs=8.8)
@@ -185,7 +185,7 @@ def wifi_bt_links():
              (1.1, "power on, host wake, reset", s.INK2)]
     for y, t, c in links:
         arrow(ax, 3.6, y, 7.0, y, c=c, lw=1.8, style="<|-|>")
-        ax.text(5.3, y + 0.2, t, ha="center", va="bottom", fontsize=7.6, color=c, linespacing=1.1)
+        ax.text(5.45, y + 0.2, t, ha="center", va="bottom", fontsize=7.6, color=c, linespacing=1.1)
     box(ax, 10.4, 4.3, 1.8, 0.9, s.UL, "cellular\nmodem", fs=8.5, bold=True)
     arrow(ax, 9.8, 4.0, 10.4, 4.6, c=s.RS, lw=1.6, style="<|-|>")
     ax.text(11.3, 3.6, "coex link\n(TX timing)", ha="center", fontsize=8, color=s.RS)
