@@ -19,5 +19,9 @@
 
     예를 들어 링크 속도를 비교할 때는 선로 부호화까지 고려해야 합니다. PCIe Gen4 x1 링크는 16 GT/s × 128/130 ÷ 8 ≈ **1.97 GB/s**, USB 3.2 Gen 2는 10 Gbps × 128/132 ÷ 8 ≈ **1.21 GB/s**가 한 방향 이론 상한입니다. (수치는 `tools/soc_numbers.py`에서 계산)
 
+![SoC 안의 AP·모뎀 베이스밴드·PCIe·직렬 엔진·USB·UFS·SPMI 블록과 RF 트랜시버·프런트엔드·Wi-Fi/BT·UWB·GNSS·USB-C·UFS·PMIC 같은 외부 칩, 그 사이 버스 이름을 나타낸 개념도](../assets/figures/conn_soc_map.svg)
+
+위 그림은 연결 블록이 SoC 안팎 어디에 있고 어떤 버스로 이어지는지를 일반적인 배치로 보여 줍니다.
+
 !!! tip "다른 섹션과의 연결"
     블록 사이의 온칩 연결은 [버스와 인터커넥트](../basics/interconnect.md), 모뎀·Wi-Fi 같은 장치의 메모리 접근 격리는 [메모리 보호와 IOMMU](../memory/iommu.md), 대기 중 연결 블록의 전력은 [대기 전력과 저전력 상태](../power/idle.md)에서 다룹니다. 무선 프로토콜 자체는 자매 핸드북인 [Cellular Handbook](https://goodhosup.github.io/cellular/), [Wi-Fi Handbook](https://goodhosup.github.io/wifi/), [Bluetooth Handbook](https://goodhosup.github.io/bluetooth/)을 참고하세요.

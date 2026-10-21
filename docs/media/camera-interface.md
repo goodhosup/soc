@@ -27,6 +27,10 @@
 
 D-PHY는 고속 전송(HS)과 저전력 제어(LP) 두 모드를 오가며, 프레임 사이 블랭킹 동안 저전력 상태로 들어가 전력을 아낍니다. 표의 최대 속도는 스마트폰에서 널리 쓰인 v2.x 기준입니다. 이후 개정에서 D-PHY v3.0(2021)은 표준 채널 레인당 9 Gbps, C-PHY v2.1은 짧은 채널 trio당 8 Gsps(약 18.3 Gbps), C-PHY v3.0(2025)은 새 부호화로 짧은 채널 trio당 약 24.9 Gbps까지 올렸습니다. 실제 제품의 지원 속도는 SoC와 센서마다 다릅니다. (수치는 `tools/soc_numbers.py`에서 계산)
 
+![카메라 센서·비디오·디스플레이의 비압축 데이터 속도 막대와 D-PHY 4레인(18 Gbps), C-PHY 1 trio(13.7 Gbps), C-PHY 3 trio(41.1 Gbps) 링크 용량 선 비교](../assets/figures/media_data_rates.svg)
+
+5000만 화소 30 fps 센서는 D-PHY 4레인 한계에 가깝고, C-PHY 3 trio에서는 여유가 있습니다.
+
 ## CSI-2 패킷과 virtual channel { .l2 }
 
 | 요소 | 내용 |

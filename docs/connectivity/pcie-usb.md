@@ -30,6 +30,10 @@
 
 선로 부호화만 반영한 값이며, 실제 처리량은 패킷 헤더·흐름 제어로 더 낮습니다. (수치는 `tools/soc_numbers.py`에서 계산) 스마트폰 SoC의 PCIe는 **루트 컴플렉스(호스트)** 역할만 하는 경우가 대부분이고, 레인 수가 적은 대신 깊은 절전 상태(L1 하위 상태)를 적극적으로 씁니다.
 
+![PCIe Gen2–Gen5 x1·x2, USB 2.0·3.2 Gen 1·Gen 2, SDIO SDR104, UART 3 Mbaud의 한 방향 이론 대역폭을 로그 축으로 비교한 막대 그래프](../assets/figures/conn_link_bandwidth.svg)
+
+UART와 PCIe Gen5 x2 사이에는 네 자릿수 이상의 차이가 있습니다.
+
 ## USB 컨트롤러와 Type-C { .l2 }
 
 | 속도 등급 | 신호 속도 | 선로 부호화 | 한 방향 이론 대역폭 |

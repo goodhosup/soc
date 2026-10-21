@@ -15,6 +15,8 @@
 
 ## 부팅 단계 { .l2 }
 
+![Boot ROM에서 커널까지 각 단계가 다음 단계의 서명을 검증하는 신뢰 사슬과 예외 레벨](../assets/figures/sec_boot_chain.svg)
+
 | 일반 단계 (TF-A 이름) | 하는 일 | Qualcomm | Exynos·Tensor | MediaTek | Apple |
 |---|---|---|---|---|---|
 | ROM (BL1) | 최소 초기화, 다음 단계 서명 검증 | PBL (Primary Boot Loader) | iROM → BL1 | BootROM | Boot ROM |

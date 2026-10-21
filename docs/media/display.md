@@ -15,18 +15,7 @@
 
 ## 합성과 오버레이 평면 { .l2 }
 
-```mermaid
-flowchart LR
-    APP["앱 버퍼"] --> P1["평면 1"]
-    VID["비디오 버퍼"] --> P2["평면 2"]
-    UI["시스템 UI"] --> P3["평면 3"]
-    P1 --> MIX["합성기"]
-    P2 --> MIX
-    P3 --> MIX
-    MIX --> PP["색 보정·톤 매핑"]
-    PP --> DSC["DSC 압축"]
-    DSC --> DSI["MIPI DSI → 패널"]
-```
+![메모리의 레이어 버퍼 중 일부는 GPU가 미리 합성해 한 평면으로 넘기고, 나머지는 DPU 평면으로 직접 읽어 섞은 뒤 색·톤 매핑, DSC 압축을 거쳐 DSI로 패널에 보내는 구조](../assets/figures/media_display_composition.svg)
 
 | 구성 요소 | 역할 |
 |---|---|
