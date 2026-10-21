@@ -1,7 +1,7 @@
 # 칩셋 이름 읽는 법
 
 !!! spec "규격 · 세대"
-    이름 체계는 표준이 아니라 각 회사의 마케팅 규칙 · 세대마다 바뀌는 일이 잦음 (예: Snapdragon 8xx 세 자리 → 8 Gen N → 8 Elite → 8 Elite Gen 5, Arm Cortex-X·A → C1 계열)
+    이름 체계는 표준이 아니라 각 회사의 마케팅 규칙 · 세대마다 바뀌는 일이 잦음 (예: Snapdragon 8xx 세 자리 → 8 Gen N → 8 Elite → 8 Elite Gen 5, Apple A11–A16 Bionic → A17 Pro, Arm Cortex-X·A → C1 계열)
     이 페이지는 **2025년까지의 이름 체계**를 기준으로 씁니다.
 
 !!! basic "한눈에 보기"
@@ -20,7 +20,7 @@
 | Qualcomm | Snapdragon 8 계열 (8 Gen 1–3 → 8 Elite → 8 Elite Gen 5) | 8s, 7, 6, 4 계열 | `+`(중간 개선판), `s`(한 단계 아래 플래그십), `for Galaxy`(고클럭 맞춤판) | `SM8xx0` 형식 (예: SM8750 = 8 Elite) |
 | 삼성 | Exynos 2x00 (2100, 2200, 2400, 2500, 2600…) | Exynos 1x80 (1280, 1380, 1480, 1580…) | 거의 없음 | `S5E9xxx` 형식 |
 | MediaTek | Dimensity 9000 계열 (9000, 9200, 9300, 9400, 9500…) | 8000·7000·6000 계열 | `+`(고클럭판) | `MT6xxx` 형식 |
-| Apple | A 시리즈 Pro (iPhone Pro), M 시리즈 Pro·Max·Ultra (Mac) | A 시리즈 기본판 | Pro, Max, Ultra | 공개 이름 위주 |
+| Apple | A 시리즈 (2023년 A17 Pro부터 Pro 아이폰용은 이름 뒤에 Pro), Mac·iPad는 M 시리즈 | 별도 중급 브랜드 없음. 기본 iPhone·SE·16e도 A 시리즈를 쓰되 이전 세대 칩이나 GPU 코어를 줄인 판을 씀 | A: Bionic(A11–A16) → 기본·Pro(A17 Pro부터), M: Pro·Max·Ultra | 공개 이름 위주. 내부 식별자는 `T8xxx` 형식 (예: A19와 A19 Pro는 모두 T8150이고 리비전으로 구분) |
 | Google | Tensor G1–G5… | — | — | 공개 이름 위주 |
 
 !!! tip "부품 번호가 더 정확할 때"
@@ -56,15 +56,17 @@ SoC 이름만큼 헷갈리는 것이 CPU 코어 이름입니다.
 
     **코드 이름과 커널.** 업스트림 Linux 커널은 Qualcomm 칩을 `sm8650`, `sm8750` 같은 부품 번호로, 디바이스 트리 호환 문자열은 `qcom,sm8750` 같은 형식으로 부릅니다. Android 공통 커널과 벤더 커널에서는 내부 코드 이름(플랫폼 이름)이 함께 쓰여서, 소스 트리를 볼 때 마케팅 이름·부품 번호·코드 이름 세 가지를 오가야 합니다.
 
-    **Apple 이름의 의미.** A 시리즈에서 Pro 판은 같은 세대의 기본판보다 GPU 코어 수·캐시 등이 더 많은 별도 구성인 경우가 많고, M 시리즈의 Max·Ultra는 블록 수를 크게 늘리거나(Max) 두 다이를 이어 붙인(Ultra) 구성입니다. 이름 하나로 다이 구성이 바뀐다는 점에서 Android 쪽의 "고클럭판"과 성격이 다릅니다.
+    **Apple 이름의 의미.** A 시리즈는 A11부터 A16까지 이름 뒤에 "Bionic"을 붙였고, 2023년 A17 Pro부터 Bionic을 빼고 Pro 아이폰용 칩에 "Pro"를 붙였습니다. 이후로는 같은 세대에 기본판과 Pro판이 함께 나옵니다(A18·A18 Pro, A19·A19 Pro). Pro판은 기본판보다 GPU 코어 수·캐시 등이 더 많은 구성입니다(예: A18은 GPU 5코어, A18 Pro는 6코어). 그 전에는 기본 아이폰이 전년도 Pro 아이폰의 칩을 그대로 쓰는 경우가 많았습니다(iPhone 14는 A15, iPhone 15는 A16). M 시리즈의 Max·Ultra는 블록 수를 크게 늘리거나(Max) 두 다이를 이어 붙인(Ultra) 구성입니다. 이름 하나로 다이 구성이 바뀐다는 점에서 Android 쪽의 "고클럭판"과 성격이 다릅니다.
+
+    **같은 이름, 다른 GPU 코어 수.** Apple은 같은 칩 이름 안에서도 GPU 코어 일부를 끈 판을 씁니다. iPhone 16e의 A18은 GPU가 4코어로 iPhone 16의 A18(5코어)보다 하나 적고, iPhone Air의 A19 Pro는 GPU가 5코어로 iPhone 17 Pro의 A19 Pro(6코어)보다 하나 적습니다. 그래서 Apple 칩은 이름만이 아니라 **어느 기기에 들어간 칩인지**까지 확인해야 정확히 비교할 수 있습니다([칩셋 세대 인덱스](../reference/chipset-index.md)).
 
 ## 칩셋 비교
 
 | 항목 | Snapdragon | Exynos | Dimensity | Apple |
 |---|---|---|---|---|
 | 세대 표기 | 이름 개편이 잦음 | 앞 두 자리 증가 | 천 단위 증가 | 숫자 1씩 증가 |
-| 같은 세대 변형 | 많음 (`+`, `s`, for Galaxy) | 적음 | 있음 (`+`) | Pro·Max·Ultra |
-| 이름에서 알 수 있는 것 | 등급과 대략의 시기 | 등급과 세대 | 등급과 세대 | 세대와 등급 |
+| 같은 세대 변형 | 많음 (`+`, `s`, for Galaxy) | 적음 | 있음 (`+`) | A: 기본·Pro (같은 이름에도 GPU 코어 수가 다른 판), M: Pro·Max·Ultra |
+| 이름에서 알 수 있는 것 | 등급과 대략의 시기 | 등급과 세대 | 등급과 세대 | 세대와 Pro 여부 (기기별 GPU 코어 수는 따로 확인) |
 
 ## 관련 페이지
 - [모바일 SoC의 역사](history.md) — 세대가 바뀐 흐름
