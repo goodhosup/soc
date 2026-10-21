@@ -25,6 +25,8 @@
 | SPMI | 2 (SCLK, SDATA) | 수십 MHz 이하 | 다중 마스터, 우선순위 중재 | SoC ↔ PMIC 전압 설정·인터럽트 |
 | RFFE | 2–3 | 수십 MHz 이하 | 모뎀이 RF 부품 제어 | PA·스위치·안테나 튜너 설정 |
 
+![I2C·SPI·UART의 배선 방식 비교](../assets/figures/conn_lowspeed_wiring.svg)
+
 I3C의 SDR 클럭 12.5 MHz는 I2C Fast-mode(400 kHz)의 약 **31배**입니다. (수치는 `tools/soc_numbers.py`에서 계산) 다만 실제 효율은 주소·응답 비트와 장치 지연에 따라 달라집니다.
 
 ## 직렬 엔진과 핀 다중화 { .l2 }

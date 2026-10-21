@@ -30,6 +30,8 @@
 | 2023–2024 | 작은 코어를 줄이거나 없애는 구성, 온디바이스 생성형 AI, **자체 설계 CPU 복귀** | Dimensity 9300(빅 코어만 8개), Apple A17 Pro(TSMC 3nm), Snapdragon 8 Elite(Oryon 자체 코어) |
 | 2025 | 3nm 2세대·**2nm** 경쟁, Arm 코어 브랜드 개편(C1 계열), SME2 행렬 확장 | Exynos 2500(삼성 3nm GAA), Snapdragon 8 Elite Gen 5, Dimensity 9500, Google Tensor G5(TSMC로 생산처 변경) |
 
+![2007년부터 2025년까지 모바일 SoC의 주요 전환점 연표](../assets/figures/start_history_timeline.svg)
+
 ## 블록이 들어온 순서 { .l2 }
 
 ```mermaid

@@ -51,6 +51,8 @@ sequenceDiagram
 | 어느 CPU 사용률이 과도 (overutilized) | 에너지 판단을 잠시 끄고 일반 부하 분산으로 전환 |
 | 발열로 최대 클럭 제한 | 열 압력(thermal pressure)을 capacity에 반영 |
 
+![CPU capacity(가장 빠른 코어 1024)와 작업 사용률, misfit 이동을 보여 주는 EAS 배치 예시](../assets/figures/cpu_sched_capacity.svg)
+
 ## Android의 추가 장치 { .l2 }
 
 | 장치 | 역할 |

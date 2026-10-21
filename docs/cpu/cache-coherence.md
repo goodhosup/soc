@@ -25,6 +25,8 @@
 | **S** (Shared) | 여러 캐시가 같은 값을 가짐 | 아니요 (먼저 다른 복사본 무효화) |
 | **I** (Invalid) | 유효한 데이터 없음 | — |
 
+![MESI 상태 전이: 자기 코어의 읽기·쓰기와 다른 캐시의 읽기·쓰기에 따른 변화](../assets/figures/cpu_mesi.svg)
+
 ```mermaid
 sequenceDiagram
     autonumber

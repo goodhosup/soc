@@ -60,6 +60,8 @@ flowchart TB
 | CSS (Compute Subsystem) | 코어·DSU·인터커넥트까지 검증된 묶음, 물리 설계 참고 포함 | 낮음, 대신 개발 기간 단축 | Arm이 2024년부터 모바일용 CSS를 제공 |
 | 아키텍처 라이선스 | 명령어 집합 사용권만 받고 코어는 직접 설계 | 가장 높음, 설계 비용·인력도 가장 큼 | Apple, Qualcomm(Oryon) |
 
+![Arm 라이선스 세 형태(CSS, 코어 라이선스, 아키텍처 라이선스)의 자유도와 개발 부담](../assets/figures/start_license_spectrum.svg)
+
 Arm 코어 라이선스는 "같은 코어를 여러 회사가 쓴다"는 뜻이므로, 같은 세대의 Exynos와 Dimensity가 같은 CPU 코어를 쓰는 일이 흔합니다. 차이는 **클럭, 캐시 구성, 공정, 전력 관리, 그리고 CPU 밖의 블록**에서 납니다.
 
 ??? expert "전문가 노트 — 설계사와 파운드리의 관계, IP 조달, 공급망 변수"

@@ -34,6 +34,8 @@
 | 전원 스위치 | 도메인 전원 연결·차단 | 파워 게이팅 불가 |
 | AON 영역 | 항상 켜진 작은 영역: 전원 제어기, 깨우기 로직, 타이머 | 꺼진 블록을 다시 깨울 주체가 없음 |
 
+![파워 도메인 경계: AON 전원 제어기, 전원 스위치, 아이솔레이션 셀, 레벨 시프터, 리텐션 플립플롭](../assets/figures/power_domain_boundary.svg)
+
 ```mermaid
 sequenceDiagram
     autonumber

@@ -24,6 +24,8 @@
 | 개발 일정 | 모뎀과 AP를 같은 일정에 맞춰야 함 | 모뎀만 따로 바꾸거나 여러 AP에 재사용 가능 |
 | 대표 사례 | Snapdragon 8 계열, Dimensity 플래그십, Exynos 2100–2500 | Apple iPhone(Qualcomm 모뎀 또는 Apple C1·C2), Google Tensor, Exynos 2600(외장 Exynos Modem 5410) |
 
+![통합 모뎀과 외장 모뎀의 배치 비교](../assets/figures/conn_modem_placement.svg)
+
 통합 여부와 관계없이 **RF 트랜시버와 프런트엔드는 거의 항상 별도 칩**입니다. 아날로그·고주파 회로는 디지털 미세 공정의 이득을 덜 받고, 안테나 근처에 놓여야 하기 때문입니다. 그래서 "통합 모뎀"은 보통 **모뎀 베이스밴드(디지털 부분)가 SoC 안에 있다**는 뜻입니다.
 
 ## 모뎀 서브시스템의 구성 { .l2 }

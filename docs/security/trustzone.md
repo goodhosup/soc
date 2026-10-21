@@ -22,6 +22,8 @@
 | EL2 | 하이퍼바이저 (pKVM·Gunyah 등) | 보안 파티션 관리자 (S-EL2, Armv8.4부터 선택) |
 | EL3 | — | 보안 모니터 (TF-A BL31 등). 세계 전환 담당 |
 
+![Arm 예외 수준 EL0–EL3과 일반 세계·보안 세계의 구성](../assets/figures/cpu_exception_levels.svg)
+
 일반 세계의 커널이 `SMC`(Secure Monitor Call) 명령을 실행하면 EL3로 넘어가고, 모니터가 레지스터 상태를 저장한 뒤 보안 세계로 전환합니다. 메모리 쪽에서는 버스 트랜잭션에 보안 여부(NS 비트)가 붙고, **TZASC**(TrustZone Address Space Controller) 같은 필터가 보안 영역 DRAM에 대한 일반 세계 접근을 막습니다. 주변장치도 보안 전용으로 지정할 수 있어, 지문 센서 입력이나 보안 화면 출력을 보안 세계만 다루게 할 수 있습니다.
 
 ```mermaid
