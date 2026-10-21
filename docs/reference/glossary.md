@@ -60,6 +60,7 @@
 | CHRE | Context Hub Runtime Environment | Android 센서 허브용 nanoapp 런타임 |
 | CHUB | Context Hub | Exynos의 센서 허브 영역 |
 | CMOS | Complementary Metal-Oxide-Semiconductor | NMOS·PMOS를 짝지은 논리 회로 방식 |
+| CoPoS | Chip on Panel on Substrate | TSMC 패널 레벨 2.5D 패키지 (개발 중) |
 | CoWoS | Chip on Wafer on Substrate | TSMC 2.5D 인터포저 패키지 |
 | CPP | Contacted Poly Pitch | 이웃한 게이트 사이 간격 |
 | CPU | Central Processing Unit | 중앙 처리 장치 |
@@ -94,11 +95,13 @@
 | EEVDF | Earliest Eligible Virtual Deadline First | Linux 6.6부터의 기본 스케줄링 알고리즘 |
 | eFuse | Electronic Fuse | 일회 기록용 칩 내장 퓨즈 |
 | EL3 | Exception Level 3 | Arm 최상위 예외 수준(보안 모니터) |
+| EMC | Epoxy Molding Compound | 패키지 몰딩용 에폭시 수지 (High-κ EMC는 열전도를 높인 것) |
 | EMFI | Electromagnetic Fault Injection | 전자기 결함 주입 |
 | EMI | Electromagnetic Interference | 전자기 간섭 |
 | EMIB | Embedded Multi-die Interconnect Bridge | Intel 기판 내장 실리콘 브리지 |
 | eMMC | embedded MultiMediaCard | 병렬 버스 기반 내장 플래시 저장장치 |
 | eSE | embedded Secure Element | 내장 보안 요소 |
+| ESL | Equivalent Series Inductance | 커패시터의 기생 직렬 인덕턴스 |
 | ETC2 | Ericsson Texture Compression 2 | OpenGL ES 3.0 필수 텍스처 압축 |
 | ETM | Embedded Trace Macrocell | Arm CoreSight 명령 추적 장치 |
 | eUICC | embedded Universal Integrated Circuit Card | 내장형 eSIM 칩 |
@@ -142,6 +145,7 @@
 | HLG | Hybrid Log-Gamma | 방송용 HDR 전달 함수 (ITU-R BT.2100) |
 | HLSL | High-Level Shading Language | Direct3D 셰이더 언어 |
 | HMP | Heterogeneous Multi-Processing | 이종 코어를 동시에 쓰는 초기 스케줄링 방식 |
+| HPB | Heat Path Block | 삼성 Exynos 2600 패키지 안 구리 방열 블록 |
 | HSR | Hidden Surface Removal | 가려진 면의 셰이딩을 하드웨어로 제거 |
 | HUK | Hardware Unique Key | 칩 고유 루트 키 |
 | HVX | Hexagon Vector eXtensions | Hexagon DSP의 넓은 벡터 확장 |
@@ -164,6 +168,7 @@
 | IP | Intellectual Property | 라이선스로 거래되는 회로 설계 블록 |
 | IP-XACT | IP-XACT (IEEE 1685) | IP 포트·레지스터·주소 맵을 XML로 기술하는 표준 |
 | IPC | Instructions Per Cycle | 사이클당 처리 명령 수 |
+| iPoP | interposer Package on Package | 인터포저를 둔 기판 기반 PoP |
 | IRDS | International Roadmap for Devices and Systems | IEEE 반도체 소자·시스템 로드맵 |
 | ISA | Instruction Set Architecture | 명령어 집합 아키텍처 |
 | iSE | integrated Secure Element | SoC 안에 통합된 보안 요소 |
@@ -184,8 +189,10 @@
 | LEC | Logic Equivalence Checking | 두 설계의 논리 등가성 형식 검사 |
 | LFM | Latent Fault Metric | ISO 26262 잠재 고장 지표 |
 | LLM | Large Language Model | 대규모 언어 모델 |
+| LLW | Low Latency Wide I/O | 넓은 I/O 모바일 DRAM (LPW와 같은 계열) |
 | LNA | Low-Noise Amplifier | 수신 저잡음 증폭기 |
 | LPDDR | Low Power Double Data Rate | 모바일용 저전력 DRAM |
+| LPW | Low Power Wide I/O | I/O 수를 크게 늘린 모바일 DRAM ("모바일 HBM") |
 | LSE | Large System Extensions | Armv8.1의 원자 연산 확장 |
 | LTPO | Low-Temperature Polycrystalline Oxide | 저주사율 구동이 가능한 OLED 백플레인 |
 | LTS | Long-Term Support | 장기 지원 커널 버전 |
@@ -196,6 +203,7 @@
 | MCU | Microcontroller Unit | 저전력 마이크로컨트롤러 |
 | MHI | Modem Host Interface | PCIe 외장 모뎀용 Qualcomm 호스트 인터페이스 |
 | MIPI | MIPI Alliance | 모바일 인터페이스 표준 단체 (CSI-2, DSI, M-PHY, UniPro 등) |
+| MLCC | Multi-Layer Ceramic Capacitor | 적층 세라믹 커패시터 |
 | MLO | Multi-Link Operation | Wi-Fi 7 다중 링크 동시 동작 |
 | MLP | Memory-Level Parallelism | 메모리 수준 병렬성 |
 | MMMC | Multi-Mode Multi-Corner | 여러 동작 모드와 공정 코너를 함께 보는 타이밍 분석 |
@@ -311,6 +319,7 @@
 | TF-A | Trusted Firmware-A | Arm 보안 펌웨어 참조 구현 (PSCI 처리) |
 | TFLite | TensorFlow Lite | LiteRT의 이전 이름 |
 | TFT | Thin-Film Transistor | 패널 화소를 구동하는 박막 트랜지스터 |
+| TGV | Through-Glass Via | 유리 기판 관통 비아 |
 | Tj | Junction Temperature | 다이 내부 접합 온도 |
 | TLAS | Top-Level Acceleration Structure | 장면 단위 레이 트레이싱 가속 구조 |
 | TLB | Translation Lookaside Buffer | 주소 변환 캐시 |
@@ -340,6 +349,7 @@
 | UVM | Universal Verification Methodology | SystemVerilog 기반 검증 방법론 (IEEE 1800.2) |
 | UWB | Ultra-Wideband | 초광대역 거리·방향 측정 무선 |
 | VESA | Video Electronics Standards Association | 디스플레이 표준 단체 (DisplayPort, DSC 등) |
+| VFO | Vertical Fan-Out | SK hynix의 TSV 없는 DRAM 적층 연결 기술 |
 | VHE | Virtualization Host Extensions | Armv8.1 호스트 커널 EL2 실행 확장 |
 | VINTF | Vendor Interface Object | 기기가 제공하는 HAL 버전 선언과 호환성 매트릭스 |
 | VIP | Verification IP | 프로토콜 검증용 모델·모니터 IP |
@@ -348,10 +358,12 @@
 | VNDK | Vendor Native Development Kit | vendor 코드가 쓸 수 있는 system 라이브러리 집합 |
 | VTS | Vendor Test Suite | vendor 인터페이스 호환성 테스트 |
 | VVC | Versatile Video Coding | H.266 비디오 코덱 |
+| VWB | Vertical Wire Bonding | 삼성의 수직 와이어 본딩 DRAM 적층 기술 |
 | WCI-2 | Wireless Coexistence Interface 2 | 모뎀–콤보 칩 공존 신호 규격 |
 | WCK | Write Clock | LPDDR5 이후의 데이터용 고속 클럭 |
 | WFE | Wait For Event | 이벤트까지 코어를 대기시키는 Arm 명령 |
 | WFI | Wait For Interrupt | 인터럽트까지 코어를 대기시키는 Arm 명령 |
+| WMCM | Wafer-level Multi-Chip Module | 다이와 DRAM을 나란히 놓는 TSMC 웨이퍼 레벨 패키지 (업계 명칭) |
 | XBL | eXtensible Boot Loader | Qualcomm의 초기 부트로더 |
 | xHCI | eXtensible Host Controller Interface | USB 호스트 컨트롤러 표준 |
 | XTS | XEX-based Tweaked-codebook mode with ciphertext Stealing | 저장장치용 AES 모드 |

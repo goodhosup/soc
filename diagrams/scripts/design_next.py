@@ -5,6 +5,7 @@
 3. design_chiplet_yield   : 200 mm² 단일 다이 vs 100 mm² 칩렛 둘 — 웨이퍼당 양품 세트 (D0 0.2)
 4. memory_lpddr_bandwidth : LPDDR 세대별 64비트 피크 대역폭 + 노트북용 128/256비트 LPDDR5X-8533
 5. next_transistor_cost   : 2nm 가상 예의 트랜지스터당 상대 비용 (개념도)
+6. design_mobile_package_thermal : 모바일 SoC 패키지 방열 구조 3종 단면 (PoP · HPB · 나란히 배치, 개념도)
 """
 from __future__ import annotations
 
@@ -214,6 +215,48 @@ def next_transistor_cost():
     s.save(fig, "next_transistor_cost")
 
 
+# ---------------------------------------------------------------- 6. 모바일 패키지 방열 구조
+def design_mobile_package_thermal():
+    die, dram, cu, pkg, board, vc = s.UL, s.DL, s.SPECIAL, s.EMPTY, s.MUTED, s.SYNC
+    panels = [
+        ("(a) fan-out PoP\nDRAM stacked on SoC", "pop"),
+        ("(b) PoP + heat path block\n(Samsung HPB, Exynos 2600)", "hpb"),
+        ("(c) die and DRAM side by side\n(Apple A20 Pro)", "side"),
+    ]
+    fig, axes = plt.subplots(1, 3, figsize=(12, 4.0))
+    for ax, (title, kind) in zip(axes, panels):
+        s.bare(ax)
+        ax.set_xlim(0, 6)
+        ax.set_ylim(0, 5.2)
+        ax.set_title(title, fontsize=10, color=s.INK, pad=6)
+        box(ax, 0.2, 0.3, 5.6, 0.45, board, "board", fs=8.5)
+        box(ax, 0.6, 0.85, 4.8, 0.35, pkg, "RDL / substrate", fs=8, ec=s.GRID, tc=s.INK2)
+        box(ax, 0.2, 4.35, 5.6, 0.4, vc, "vapor chamber / graphite", fs=8.5)
+        if kind == "side":
+            box(ax, 0.9, 1.3, 2.2, 0.75, die, "SoC die", fs=9, bold=True)
+            box(ax, 3.4, 1.3, 1.7, 0.75, dram, "DRAM", fs=9, bold=True)
+            ax.annotate("", xy=(2.0, 4.3), xytext=(2.0, 2.1),
+                        arrowprops=dict(arrowstyle="-|>", color=s.RS, lw=2.4), zorder=0.5)
+            ax.text(2.15, 3.2, "direct path\n(memory out of\nthermal path)", fontsize=8, color=s.RS, va="center")
+        else:
+            box(ax, 1.4, 1.3, 3.2, 0.75, die, "SoC die", fs=9, bold=True)
+            box(ax, 0.6, 2.15, 4.8, 0.3, pkg, "top RDL / interposer", fs=7.5, ec=s.GRID, tc=s.INK2)
+            if kind == "pop":
+                box(ax, 0.8, 2.6, 4.4, 1.0, dram, "DRAM package", fs=9, bold=True)
+                ax.annotate("", xy=(3.0, 4.3), xytext=(3.0, 2.1),
+                            arrowprops=dict(arrowstyle="-|>", color=s.RS, lw=1.2, ls="--"), zorder=0.5)
+                ax.text(3.15, 3.95, "heat must pass\nthrough DRAM", fontsize=8, color=s.RS, va="center")
+            else:
+                box(ax, 0.8, 2.6, 2.2, 1.0, cu, "Cu heat\npath block", fs=8.5, bold=True)
+                box(ax, 3.2, 2.6, 2.0, 1.0, dram, "DRAM\n(smaller)", fs=8.5, bold=True)
+                ax.annotate("", xy=(1.9, 4.3), xytext=(1.9, 2.1),
+                            arrowprops=dict(arrowstyle="-|>", color=s.RS, lw=2.0), zorder=0.5)
+                ax.text(2.05, 3.95, "via Cu block", fontsize=8, color=s.RS, va="center")
+    fig.text(0.5, 0.04, "conceptual cross-sections, not to scale; exact stack-ups are not public",
+             ha="center", fontsize=8.8, color=s.MUTED)
+    s.save(fig, "design_mobile_package_thermal")
+
+
 if __name__ == "__main__":
     s.setup()
     design_flow()
@@ -221,3 +264,4 @@ if __name__ == "__main__":
     design_chiplet_yield()
     memory_lpddr_bandwidth()
     next_transistor_cost()
+    design_mobile_package_thermal()

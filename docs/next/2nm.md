@@ -33,8 +33,8 @@
 
 | 회사 | 상황 (이 페이지 기준 시점) |
 |---|---|
-| 삼성 | Exynos 2600을 SF2 기반 첫 2nm 스마트폰 SoC로 발표(2025년 12월) |
-| Apple | iPhone 18 Pro의 A20 Pro를 첫 2nm iPhone 칩으로 발표(2026년 9월), TSMC N2 계열로 보도 |
+| 삼성 | Exynos 2600을 SF2 기반 첫 2nm 스마트폰 SoC로 발표(2025년 12월). 패키지에 방열 블록(HPB)을 넣음 |
+| Apple | iPhone 18 Pro의 A20 Pro를 첫 2nm iPhone 칩으로 발표(2026년 9월). TechInsights 분해 분석에서 TSMC N2 나노시트 트랜지스터를 확인했다고 보도됨. 패키지도 다이·DRAM 나란히 배치로 바뀜 |
 | MediaTek | Dimensity 9600 Pro를 TSMC 2nm(N2P로 보도) 기반으로 발표(2026년 9월) |
 | Qualcomm | 2025년 플래그십(Snapdragon 8 Elite Gen 5)은 3nm, 2026년 Snapdragon 8 Elite Gen 6·Extreme Gen 6를 첫 2nm 칩으로 발표(2026년 9월, TSMC N2P로 보도) |
 

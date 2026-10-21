@@ -42,7 +42,7 @@ Snapdragon 8 Elite부터 CPU가 Arm 코어 기반 Kryo에서 자체 설계 Oryon
 | Exynos 2500 | 2025 | 삼성 3nm GAA | 1 × Cortex-X925 + 7 × A725 + 2 × A520 (10코어) | Xclipse 950 (AMD RDNA 기반) | LPDDR5X | 통합 |
 | Exynos 2600 | 2025 | 삼성 2nm GAA | 1 × C1-Ultra + 3 × C1-Pro + 6 × C1-Pro (10코어) | Xclipse 960 (AMD RDNA 기반) | LPDDR5X | 외장 (Exynos Modem 5410) |
 
-Exynos 990은 자체 CPU 코어(Mongoose)를 쓴 마지막 세대이고, 2200부터 GPU가 Mali에서 AMD RDNA 기반 Xclipse로 바뀌었습니다. 2023년 초 출시된 Galaxy S23 시리즈는 전 지역에 Snapdragon을 탑재해, 2200(2022년 1월 발표)과 2400(2023년 10월 발표) 사이에는 Galaxy S용 Exynos 플래그십이 없었습니다. Exynos 2600은 2nm GAA 공정의 첫 Exynos이며, 2100 이후 처음으로 5G 모뎀을 SoC에 넣지 않고 별도 칩(Exynos Modem 5410)으로 분리했습니다([모뎀의 통합](../connectivity/modem.md)).
+Exynos 990은 자체 CPU 코어(Mongoose)를 쓴 마지막 세대이고, 2200부터 GPU가 Mali에서 AMD RDNA 기반 Xclipse로 바뀌었습니다. 2023년 초 출시된 Galaxy S23 시리즈는 전 지역에 Snapdragon을 탑재해, 2200(2022년 1월 발표)과 2400(2023년 10월 발표) 사이에는 Galaxy S용 Exynos 플래그십이 없었습니다. Exynos 2600은 2nm GAA 공정의 첫 Exynos이며, 패키지 안에 구리 방열 블록(HPB)을 넣었고, 2100 이후 처음으로 5G 모뎀을 SoC에 넣지 않고 별도 칩(Exynos Modem 5410)으로 분리했습니다([모뎀의 통합](../connectivity/modem.md)).
 
 ## MediaTek Dimensity 플래그십 { .l2 }
 
@@ -71,9 +71,9 @@ Apple은 코어 이름·메모리 종류·정확한 공정 이름을 공식으�
 | A17 Pro | 2023 | TSMC 3nm (N3B, 추정) | 2P + 4E | 자체 6코어 (하드웨어 레이 트레이싱) | LPDDR5 (추정) | 외장 |
 | A18 / A18 Pro | 2024 | TSMC 3nm (N3E, 추정) | 2P + 4E | 자체 5코어 / 6코어 | LPDDR5X (추정) | 외장 |
 | A19 / A19 Pro | 2025 | TSMC 3nm (N3P, 추정) | 2P + 4E | 자체 5코어 / 6코어 (iPhone Air의 A19 Pro는 5코어) | LPDDR5X (추정) | 외장 |
-| A20 Pro | 2026 | 2nm (TSMC N2, 추정) | 2P + 4E | 자체 7코어 | — | 외장 (자체 C2) |
+| A20 Pro | 2026 | 2nm (TSMC N2, 분해 분석 보도) | 2P + 4E | 자체 7코어 | LPDDR5X (96비트, 분해 분석 초기 보도) | 외장 (자체 C2) |
 
-Apple은 이 표의 모든 세대에서 2P + 4E 구성을 유지하며 코어 자체를 키워 왔습니다. Apple이 직접 밝힌 공정은 "5나노"(A14·A15), "4나노"(A16), "3나노"(A17 Pro), "2세대 3나노"(A18), "2나노"(A20 Pro) 같은 숫자 수준이며, TSMC 세부 노드 이름은 보도 기준입니다. 모뎀은 SoC 밖의 별도 칩이며, 공급원은 Qualcomm에서 자체 C 시리즈로 옮겨 가고 있습니다(2025년 iPhone Air의 C1X, 2026년 iPhone 18 Pro의 C2).
+Apple은 이 표의 모든 세대에서 2P + 4E 구성을 유지하며 코어 자체를 키워 왔습니다. Apple이 직접 밝힌 공정은 "5나노"(A14·A15), "4나노"(A16), "3나노"(A17 Pro), "2세대 3나노"(A18), "2나노"(A20 Pro) 같은 숫자 수준이며, TSMC 세부 노드 이름은 보도 기준입니다. 모뎀은 SoC 밖의 별도 칩이며, 공급원은 Qualcomm에서 자체 C 시리즈로 옮겨 가고 있습니다(2025년 iPhone Air의 C1X, 2026년 iPhone 18 Pro의 C2). A20 Pro는 A10부터 이어 온 InFO-PoP(SoC 위에 DRAM 적층)를 버리고 다이와 DRAM을 나란히 놓는 패키지로 바꿨습니다(Apple 발표, [패키징](../design/packaging.md#모바일-패키지의-방열-경쟁)).
 
 ## Google Tensor { .l2 }
 
@@ -121,7 +121,8 @@ Tensor는 G4까지 삼성과 공동 개발·삼성 파운드리 생산이었고,
     - 5 reasons why Google Tensor G5 is a game-changer for Pixel (2025-08) — <https://blog.google/products-and-platforms/devices/pixel/tensor-g5-pixel-10/>
     - Google introduces Pixel 11, Pixel 11 Pro and Pixel 11 Pro XL (2026-08) — <https://blog.google/products-and-platforms/devices/pixel/google-pixel-11-pro-xl/>
 - Arm: Cortex-A·X 및 C1 CPU, Mali·Immortalis GPU 제품 발표 자료
-- 추정 값: 공개 분해 분석(다이 사진·패키지 분석)과 기술 매체 보도(Exynos 2600 외장 모뎀, Tensor G5·G6 CPU·GPU 구성, Tensor G6 모뎀 등)
+- 추정 값: 공개 분해 분석(다이 사진·패키지 분석)과 기술 매체 보도(Exynos 2600 외장 모뎀, Tensor G5·G6 CPU·GPU 구성, Tensor G6 모뎀, A20 Pro 공정·메모리 인터페이스 등)
+    - TechInsights 분해 분석 보도(A20 Pro TSMC N2·WMCM 패키지, 2026-09) — <https://www.techtimes.com/articles/327936/20260923/techinsights-teardown-confirms-tsmc-2nm-nanosheet-transistors-now-inside-iphone-18-pro.htm>
 
 ## 관련 페이지
 
