@@ -19,12 +19,17 @@
 from __future__ import annotations
 
 import math
+import sys
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Rectangle, Circle
 
 import style as s
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
+import soc_numbers as num  # noqa: E402
 
 
 def box(ax, x, y, w, h, fc, label="", fs=9, ec="#ffffff", lw=1.2, tc=None, bold=False, round_=True, z=2):
@@ -138,9 +143,9 @@ def vth_tradeoff():
 def dvfs_energy():
     fig, ax = plt.subplots(figsize=(8.6, 4.2))
     cases = ["baseline\n(f, V)", "clock ½\n(f/2, V)", "clock ½ + voltage 0.7×\n(f/2, 0.7V)"]
-    power = [1.0, 0.5, 0.245]
+    power = [1.0, num.dyn_power_ratio(1, 1, 0.5, 1), num.dyn_power_ratio(1, 1, 0.5, 0.7)]
     perf = [1.0, 0.5, 0.5]
-    energy = [1.0, 1.0, 0.49]
+    energy = [1.0, num.energy_ratio(1, 1, 0.5, 1), num.energy_ratio(1, 1, 0.5, 0.7)]
     x = np.arange(3)
     w = 0.25
     for i, (vals, c, lab) in enumerate(((power, s.UL, "power"), (perf, s.DL, "performance"),
@@ -273,14 +278,13 @@ def die_yield():
     d = 300.0
     r = d / 2
     A = np.linspace(40, 250, 300)  # mm²
-    n = math.pi * r ** 2 / A - math.pi * d / np.sqrt(2 * A)
-    y = np.exp(-A / 100 * 0.1)
-    good = n * y
-    ax.plot(A, n, color=s.DL, lw=2.2, label="dies per wafer (gross)")
+    gross = np.array([num.dies_per_wafer(a, d) for a in A])
+    y = np.array([num.poisson_yield(a, 0.1) for a in A])
+    good = gross * y
+    ax.plot(A, gross, color=s.DL, lw=2.2, label="dies per wafer (gross)")
     ax.plot(A, good, color=s.SYNC, lw=2.6, label="good dies (× Poisson yield)")
     for a in (100, 120, 150):
-        nn = math.pi * r ** 2 / a - math.pi * d / math.sqrt(2 * a)
-        g = nn * math.exp(-a / 100 * 0.1)
+        g = num.dies_per_wafer(a, d) * num.poisson_yield(a, 0.1)
         ax.plot([a], [g], "o", color=s.SYNC)
         ax.text(a + 3, g + 25, f"{a} mm²: ≈{g:.0f}", fontsize=8.5, color=s.INK)
     ax.set_xlabel("die area (mm²)")
@@ -396,8 +400,8 @@ def ufs_stack():
             ha="center", fontsize=8, color=s.INK2)
     ax.set_title("UFS layers", fontsize=11, fontweight="bold")
     gens = ["UFS 2.1\nHS-G3", "UFS 3.1\nHS-G4", "UFS 4.0/4.1\nHS-G5"]
-    lane = [5.8, 11.7, 23.3]
-    two = [11.7, 23.3, 46.6]
+    lane = [round(num.ufs_raw_gbps(g, lanes=1), 1) for g in ("HS-G3", "HS-G4", "HS-G5")]
+    two = [round(num.ufs_raw_gbps(g, lanes=2), 1) for g in ("HS-G3", "HS-G4", "HS-G5")]
     bars = bx.bar(gens, lane, color=[s.GRID, s.DL, s.UL], width=0.6)
     for b, v, t in zip(bars, lane, two):
         bx.text(b.get_x() + b.get_width() / 2, v + 0.5, f"≈{v} Gbps/lane\n(2 lanes ≈{t})",
