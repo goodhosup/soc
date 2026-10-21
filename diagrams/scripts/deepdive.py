@@ -56,7 +56,7 @@ def history_timeline():
           (2020, "Cortex-X1", s.DL),
           (2021, "Armv9", s.DL),
           (2022, "3nm GAA\nproduction", s.CTRL),
-          (2023, "on-device gen-AI,\ncustom CPUs return", s.UL),
+          (2023, "on-device gen-AI,\ncustom CPUs (2023–24)", s.UL),
           (2025, "2nm race,\nArm C1 cores, SME2", s.CTRL)]
     fig, ax = canvas(13, 5.2, (2005.6, 2026.6), (-3.3, 3.4))
     ax.plot([2006.6, 2025.8], [0, 0], color=s.INK2, lw=2)
@@ -361,6 +361,7 @@ def modem_placement():
 # ---------------------------------------------------------------- 11. 벤치마크
 def bench_efficiency():
     fig, (ax, bx) = plt.subplots(1, 2, figsize=(12, 4.4))
+    fig.subplots_adjust(wspace=0.5)
     chips = ["chip A\n8 W", "chip B\n6 W"]
     score = [5000, 4500]
     ppw = [625, 750]
@@ -389,6 +390,7 @@ def bench_efficiency():
                 arrowprops=dict(arrowstyle="-|>", color=s.UL))
     bx.set_xlabel("cores")
     bx.set_ylabel("speed-up")
+    bx.set_xticks([2, 4, 6, 8, 10, 12, 14, 16])
     bx.set_ylim(0, 12)
     bx.legend(frameon=False, fontsize=8.5)
     bx.spines[["top", "right"]].set_visible(False)
